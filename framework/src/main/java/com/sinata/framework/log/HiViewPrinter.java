@@ -25,35 +25,35 @@ import java.util.List;
 
 public class HiViewPrinter implements HiLogPrinter {
 
-    private RecyclerView mRecyclerView;
-    private LogAdapter mLogAdapter;
-    private HiViewPrinterProvider mHiViewPrinterProvider;
+    private RecyclerView recyclerView;
+    private LogAdapter adapter;
+    private HiViewPrinterProvider viewProvider;
 
     public HiViewPrinter(Activity activity) {
         FrameLayout rootView = activity.findViewById(android.R.id.content);
 
-        mRecyclerView = new RecyclerView(activity);
-        mLogAdapter = new LogAdapter(LayoutInflater.from(mRecyclerView.getContext()));
-        LinearLayoutManager layoutManager = new LinearLayoutManager(mRecyclerView.getContext());
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(mLogAdapter);
-        mHiViewPrinterProvider = new HiViewPrinterProvider(rootView,mRecyclerView);
+        recyclerView = new RecyclerView(activity);
+        adapter = new LogAdapter(LayoutInflater.from(recyclerView.getContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+        viewProvider = new HiViewPrinterProvider(rootView,recyclerView);
 
     }
 
 
 
     public HiViewPrinterProvider getViewProvider(){
-        return mHiViewPrinterProvider;
+        return viewProvider;
     }
 
     @Override
     public void print(@NotNull HiLogConfig config, int level, String tag, @NotNull String printString) {
         // 将log展示添加到recycleView
-        mLogAdapter.addItem(new HiLogMo(System.currentTimeMillis(), level, tag, printString));
+        adapter.addItem(new HiLogMo(System.currentTimeMillis(), level, tag, printString));
 
         // 滚动到对应的位置
-        mRecyclerView.smoothScrollToPosition(mLogAdapter.getItemCount() - 1);
+        recyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);
     }
 
 
@@ -83,10 +83,10 @@ public class HiViewPrinter implements HiLogPrinter {
             HiLogMo logItem = mLogs.get(position);
 
             int color = getHighlightColor(logItem.level);
-            holder.mHiTagView.setTextColor(color);
-            holder.mHiLogView.setTextColor(color);
-            holder.mHiTagView.setText(logItem.getFlattened());
-            holder.mHiLogView.setText(logItem.log);
+            holder.tag.setTextColor(color);
+            holder.message.setTextColor(color);
+            holder.tag.setText(logItem.getFlattened());
+            holder.message.setText(logItem.log);
         }
 
 
@@ -112,7 +112,7 @@ public class HiViewPrinter implements HiLogPrinter {
                     highlight = 0xffbbb529;
                     break;
                 case HiLogType.E:
-                    highlight = 0xfff6b68;
+                    highlight = 0xffff6b68;
                     break;
                 default:
                     highlight = 0xffffff00;
@@ -128,13 +128,13 @@ public class HiViewPrinter implements HiLogPrinter {
     }
 
     private static class LogViewHolder extends RecyclerView.ViewHolder {
-        private TextView mHiTagView;
-        private TextView mHiLogView;
+        private TextView tag;
+        private TextView message;
 
         public LogViewHolder(@NonNull View itemView) {
             super(itemView);
-            mHiTagView = itemView.findViewById(R.id.tag);
-            mHiLogView = itemView.findViewById(R.id.message);
+            tag = itemView.findViewById(R.id.tag);
+            message = itemView.findViewById(R.id.message);
         }
     }
 }
