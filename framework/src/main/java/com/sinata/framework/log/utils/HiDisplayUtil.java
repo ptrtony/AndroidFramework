@@ -1,4 +1,4 @@
-package com.sinata.framework.utils;
+package com.sinata.framework.log.utils;
 
 import android.app.Activity;
 import android.content.Context;

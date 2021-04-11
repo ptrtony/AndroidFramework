@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.sinata.framework.utils.HiDisplayUtil;
+import com.sinata.framework.log.utils.HiDisplayUtil;
 
 
 /**
