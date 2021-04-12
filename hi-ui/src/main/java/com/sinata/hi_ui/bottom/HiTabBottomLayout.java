@@ -1,4 +1,4 @@
-package com.sinata.framework.ui.bottom;
+package com.sinata.hi_ui.bottom;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,14 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import com.sinata.framework.R;
-import com.sinata.framework.log.utils.HiDisplayUtil;
-import com.sinata.framework.ui.tab.common.IHiTabLayout;
-
+import com.sinata.hi_library.log.utils.HiDisplayUtil;
+import com.sinata.hi_ui.R;
+import com.sinata.hi_ui.tab.common.IHiTabLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -106,7 +103,7 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
         for (int i = 0; i < infoList.size(); i++) {
             final HiTabBottomInfo<?> hiTabBottomInfo = infoList.get(i);
             //Tips:为何不用LinearLayout:当动态改变child大小后Gravity会失效
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
+            LayoutParams params = new LayoutParams(width, height);
             params.leftMargin = i * width;
             params.gravity = Gravity.BOTTOM;
             HiTabBottom hiTabBottom = new HiTabBottom(getContext());

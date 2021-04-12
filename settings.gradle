@@ -1,3 +1,5 @@
+include ':hi-ui'
+include ':hi-library'
 include ':framework'
 include ':app'
 rootProject.name = "FrameWork"
