@@ -13,6 +13,6 @@ public class CategoryFragment extends HiBaseFragment {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_category;
     }
 }

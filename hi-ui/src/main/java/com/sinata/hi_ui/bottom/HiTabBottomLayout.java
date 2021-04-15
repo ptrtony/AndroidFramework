@@ -13,12 +13,16 @@ import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sinata.hi_library.log.utils.HiDisplayUtil;
 import com.sinata.hi_library.log.utils.HiViewUtil;
 import com.sinata.hi_ui.R;
 import com.sinata.hi_ui.tab.common.IHiTabLayout;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -33,6 +37,7 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
     private List<OnTabSelectedListener<HiTabBottomInfo<?>>> tabSelectedListeners = new ArrayList<>();
     private HiTabBottomInfo<?> selectInfo;
     private float bottomAlpha = 1f;
+    private float tabBottomAlpha = 1f;
     //TabBottom的高度
     private float tabBottomHeight = 50;
     //TabBottom头部线条高度
@@ -84,7 +89,7 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
     private static final String TAG_TAB_BOTTOM = "TAG_TAB_BOTTOM";
 
     @Override
-    public void inflateInfo(@NonNull List<HiTabBottomInfo<?>> infoList) {
+    public void inflateInfo(@Nullable List<HiTabBottomInfo<?>> infoList) {
         if (infoList == null) {
             return;
         }
@@ -119,7 +124,6 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
             hiTabBottom.setOnClickListener(v -> onSelected(hiTabBottomInfo));
         }
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-
         addBottomLine();
         addView(ll, params);
         fixContentView();
@@ -147,6 +151,7 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, HiDisplayUtil.dp2px(getContext(), tabBottomHeight));
         params.gravity = Gravity.BOTTOM;
         addView(view, params);
+        view.setAlpha(tabBottomAlpha);
     }
 
     /**
@@ -165,6 +170,10 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
             targetView = HiViewUtil.findTypeView(rootView, ScrollView.class);
         }
 
+        if (targetView == null){
+            targetView = HiViewUtil.findTypeView(rootView, NestedScrollView.class);
+        }
+
         if (targetView != null){
             targetView.setPadding(0,0,0,HiDisplayUtil.dp2px(getContext(),tabBottomHeight));
         }
@@ -177,6 +186,14 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
 
     public void setBottomAlpha(float bottomAlpha) {
         this.bottomAlpha = bottomAlpha;
+    }
+
+    public float getTabBottomAlpha(){
+        return tabBottomAlpha;
+    }
+
+    public void setTabBottomAlpha(float tabBottomAlpha){
+        this.tabBottomAlpha = tabBottomAlpha;
     }
 
     public float getTabHeight() {

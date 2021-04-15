@@ -11,8 +11,10 @@ import com.sinata.framework.R;
  */
 public class CollectFragment extends HiBaseFragment {
 
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_collect;
     }
+
 }

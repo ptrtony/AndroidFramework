@@ -15,4 +15,5 @@ public class MeFragment extends HiBaseFragment {
     public int getLayoutId() {
         return R.layout.fragment_me;
     }
+
 }

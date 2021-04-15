@@ -1,4 +1,4 @@
-package com.sinata.common.ui.component;
+package com.sinata.common.tab;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 /**
  * 1.将Fragment的操作内聚
- *
+ * <p>
  * 2.提供通用的API
  */
 public class HiFragmentTabView extends FrameLayout {
@@ -34,30 +34,29 @@ public class HiFragmentTabView extends FrameLayout {
     }
 
     public void setAdapter(HiTabViewAdapter adapter) {
-        if (mAdapter!=null || adapter == null){
+        if (mAdapter != null || adapter == null) {
             return;
         }
         this.mAdapter = adapter;
         currentPosition = -1;
     }
 
-    public void setCurrentPosition(int position){
-        if (position<0||position>mAdapter.getCount()){
+    public void setCurrentItem(int position) {
+        if (position < 0 || position > mAdapter.getCount()) {
             return;
         }
-        if (currentPosition != position){
+        if (currentPosition != position) {
             currentPosition = position;
-            mAdapter.instantiateItem(this,position);
+            mAdapter.instantiateItem(this, position);
         }
-
     }
 
-    public int getCurrentItem(){
+    public int getCurrentItem() {
         return currentPosition;
     }
 
-    public Fragment getCurrentFragment(){
-        if (mAdapter == null){
+    public Fragment getCurrentFragment() {
+        if (mAdapter == null) {
             throw new IllegalArgumentException("adapter is not null please call setAdapter frist");
         }
         return mAdapter.getCurrentFragment();

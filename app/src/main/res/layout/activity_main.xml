@@ -7,9 +7,114 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <com.sinata.common.ui.component.HiFragmentTabView
+    <com.sinata.common.tab.HiFragmentTabView
         android:id="@+id/fragment_tab_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:background="#009688"-->
+<!--                android:layout_marginTop="20dp"/>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--    </androidx.core.widget.NestedScrollView>-->
 </com.sinata.hi_ui.bottom.HiTabBottomLayout>

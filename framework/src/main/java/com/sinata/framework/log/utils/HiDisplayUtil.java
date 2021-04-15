@@ -23,13 +23,13 @@ public class HiDisplayUtil{
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, pxValue, Resources.getSystem().getDisplayMetrics());
     }
 
-    public static int dp2px(Context context, float dpValue) {
-        float scale = context.getResources().getDisplayMetrics().density;
+    public static int dp2px(Resources resources, float dpValue) {
+        float scale = resources.getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 
-    public static int sp2px(Context context, float spValue) {
-        float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+    public static int sp2px(Resources resources, float spValue) {
+        float fontScale = resources.getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 

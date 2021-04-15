@@ -1,4 +1,4 @@
-package com.sinata.common.ui.component;
+package com.sinata.common.tab;
 
 import android.view.ViewGroup;
 
@@ -59,7 +59,6 @@ public class HiTabViewAdapter {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
