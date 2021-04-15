@@ -3,6 +3,7 @@ package com.sinata.framework
 import android.app.Application
 import androidx.multidex.MultiDex
 import com.google.gson.Gson
+import com.sinata.common.ui.component.HiBaseApplication
 import com.sinata.framework.log.HiConsolePrinter
 import com.sinata.framework.log.HiLogConfig
 import com.sinata.framework.log.HiLogManager
@@ -13,7 +14,7 @@ import com.sinata.framework.log.HiLogManager
 @Time 7:36 PM
 @Describe:
  */
-class HiApplication : Application() {
+class HiApplication : HiBaseApplication() {
 
     override fun onCreate() {
         super.onCreate()

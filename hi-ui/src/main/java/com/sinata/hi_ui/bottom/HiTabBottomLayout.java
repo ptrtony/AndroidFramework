@@ -7,10 +7,16 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.FrameLayout;
+import android.widget.ScrollView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.sinata.hi_library.log.utils.HiDisplayUtil;
+import com.sinata.hi_library.log.utils.HiViewUtil;
 import com.sinata.hi_ui.R;
 import com.sinata.hi_ui.tab.common.IHiTabLayout;
 import java.util.ArrayList;
@@ -112,9 +118,11 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
             ll.addView(hiTabBottom, params);
             hiTabBottom.setOnClickListener(v -> onSelected(hiTabBottomInfo));
         }
-        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+
         addBottomLine();
         addView(ll, params);
+        fixContentView();
     }
 
     private void addBottomLine() {
@@ -139,6 +147,27 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, HiDisplayUtil.dp2px(getContext(), tabBottomHeight));
         params.gravity = Gravity.BOTTOM;
         addView(view, params);
+    }
+
+    /**
+     * 修复内容区域的底部的padding
+     */
+    private void fixContentView(){
+        if (!(getChildAt(0) instanceof ViewGroup)){
+            return;
+        }
+        ViewGroup rootView = (ViewGroup) getChildAt(0);
+        ViewGroup targetView = HiViewUtil.findTypeView(rootView, RecyclerView.class);
+        if (targetView == null){
+            targetView = HiViewUtil.findTypeView(rootView, AbsListView.class);
+        }
+        if (targetView == null){
+            targetView = HiViewUtil.findTypeView(rootView, ScrollView.class);
+        }
+
+        if (targetView != null){
+            targetView.setPadding(0,0,0,HiDisplayUtil.dp2px(getContext(),tabBottomHeight));
+        }
     }
 
 
@@ -174,14 +203,4 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
         this.bottomLineColor = bottomLineColor;
     }
 
-    /**
-     * 修复内容区域的底部的padding
-     */
-    private void fixContentView(){
-        if (!(getChildAt(0) instanceof ViewGroup)){
-            return;
-        }
-        ViewGroup viewGroup = (ViewGroup) getChildAt(0);
-
-    }
 }
