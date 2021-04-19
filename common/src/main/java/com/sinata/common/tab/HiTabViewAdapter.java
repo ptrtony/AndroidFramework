@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.sinata.hi_ui.bottom.HiTabBottomInfo;
+import com.sinata.hi_ui.tab.bottom.HiTabBottomInfo;
 
 import java.util.List;
 

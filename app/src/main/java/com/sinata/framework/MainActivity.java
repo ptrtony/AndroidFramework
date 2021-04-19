@@ -1,11 +1,16 @@
 package com.sinata.framework;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.sinata.common.ui.component.HiBaseActivity;
+import com.sinata.framework.activity.HiRefreshTopActivity;
+import com.sinata.framework.activity.HiTabBottomActivity;
+import com.sinata.framework.activity.HiTabTopDemoActivity;
 import com.sinata.framework.logic.MainActivityLogic;
 
 /**
@@ -22,13 +27,20 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainActivityLogic = new MainActivityLogic(this,savedInstanceState);
+
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-//        mainActivityLogic.onSaveInstanceState(outState);
+
+    public void onClickTabBottom(View view){
+        startActivity(new Intent(this, HiTabBottomActivity.class));
+    }
+
+    public void onClickTabTop(View view){
+        startActivity(new Intent(this, HiTabTopDemoActivity.class));
+    }
+
+    public void onRefreshClick(View view){
+        startActivity(new Intent(this, HiRefreshTopActivity.class));
     }
 
 

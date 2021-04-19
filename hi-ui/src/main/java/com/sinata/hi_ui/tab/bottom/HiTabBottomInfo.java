@@ -1,4 +1,4 @@
-package com.sinata.hi_ui.bottom;
+package com.sinata.hi_ui.tab.bottom;
 
 import android.graphics.Bitmap;
 

@@ -1,4 +1,4 @@
-package com.sinata.hi_ui.bottom;
+package com.sinata.hi_ui.tab.bottom;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,8 +20,6 @@ import com.sinata.hi_library.log.utils.HiDisplayUtil;
 import com.sinata.hi_library.log.utils.HiViewUtil;
 import com.sinata.hi_ui.R;
 import com.sinata.hi_ui.tab.common.IHiTabLayout;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Iterator;

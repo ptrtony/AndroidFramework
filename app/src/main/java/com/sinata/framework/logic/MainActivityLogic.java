@@ -24,9 +24,9 @@ import com.sinata.framework.fragment.HomePageFragment;
 import com.sinata.framework.fragment.MeFragment;
 import com.sinata.framework.fragment.RecommendFragment;
 import com.sinata.framework.log.utils.HiDisplayUtil;
-import com.sinata.hi_ui.bottom.HiTabBottom;
-import com.sinata.hi_ui.bottom.HiTabBottomInfo;
-import com.sinata.hi_ui.bottom.HiTabBottomLayout;
+import com.sinata.hi_ui.tab.bottom.HiTabBottom;
+import com.sinata.hi_ui.tab.bottom.HiTabBottomInfo;
+import com.sinata.hi_ui.tab.bottom.HiTabBottomLayout;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,8 +62,8 @@ public class MainActivityLogic {
         return mHiTabBottomLayout;
     }
 
-    public void setmHiTabBottomLayout(HiTabBottomLayout mHiTabBottomLayout) {
-        this.mHiTabBottomLayout = mHiTabBottomLayout;
+    public void setHiTabBottomLayout(HiTabBottomLayout hiTabBottomLayout) {
+        this.mHiTabBottomLayout = hiTabBottomLayout;
     }
 
     private void initTabBottom() {
@@ -139,6 +139,12 @@ public class MainActivityLogic {
         HiTabViewAdapter hiTabViewAdapter = new HiTabViewAdapter(activityProvider.getSupportFragmentManager(), infoList);
         mHiFragmentTabView = activityProvider.findViewById(R.id.fragment_tab_view);
         mHiFragmentTabView.setAdapter(hiTabViewAdapter);
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
+        if (outState!=null){
+            outState.putInt(SAVED_CURRENT_ID,currentItemIndex);
+        }
     }
 
 

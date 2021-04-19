@@ -3,9 +3,13 @@ package com.sinata.hi_library.log.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
 
 /**
  * @author cjq
@@ -45,6 +49,8 @@ public class HiDisplayUtil{
         return outMetrics.widthPixels;
     }
 
+
+
     /**
      * 获取高度
      * @param activity
@@ -56,6 +62,40 @@ public class HiDisplayUtil{
         manager.getDefaultDisplay().getMetrics(outMetrics);
         return outMetrics.heightPixels;
     }
+
+
+    public static int getDisplayWidthInPx(@NonNull Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        if (wm != null) {
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            return size.x;
+        }
+        return 0;
+
+    }
+
+    public static int getDisplayHeightInPx(@NonNull Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        if (wm != null) {
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            return size.y;
+        }
+        return 0;
+    }
+
+//    public static int getStatusBarDimensionPx() {
+//        int statusBarHeight = 0;
+//        Resources res = AppGlobals.INSTANCE.get().getResources();
+//        int resourceId = res.getIdentifier("status_bar_height", "dimen", "android");
+//        if (resourceId > 0) {
+//            statusBarHeight = res.getDimensionPixelSize(resourceId);
+//        }
+//        return statusBarHeight;
+//    }
 
 
 
