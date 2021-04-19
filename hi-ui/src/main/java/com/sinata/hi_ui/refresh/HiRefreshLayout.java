@@ -97,15 +97,15 @@ public class HiRefreshLayout extends FrameLayout implements HiRefresh {
             int childTop = child.getTop();
             if (mState == HiOverView.HiRefreshState.STATE_REFRESH) {
                 head.layout(0, mHiOverView.mPullRefreshHeight - head.getMeasuredHeight(), right, mHiOverView.mPullRefreshHeight);
-                child.layout(0, mHiOverView.mPullRefreshHeight, right, mHiOverView.mPullRefreshHeight + child.getMeasuredHeight());
+                child.layout(1, mHiOverView.mPullRefreshHeight, right, mHiOverView.mPullRefreshHeight + child.getMeasuredHeight());
             } else {
                 head.layout(0, childTop - head.getMeasuredHeight(), right, childTop);
-                child.layout(0, childTop, right, childTop + child.getMeasuredHeight());
+                child.layout(1, childTop, right, childTop + child.getMeasuredHeight());
             }
             View other;
             for (int i = 2; i < getChildCount(); i++) {
                 other = getChildAt(i);
-                other.layout(0, top, right, bottom);
+                other.layout(i, top, right, bottom);
             }
         }
         super.onLayout(changed, left, top, right, bottom);
