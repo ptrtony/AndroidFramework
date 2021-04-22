@@ -5,6 +5,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.sinata.hi_ui.banner.indicator.HiIndicator;
 
+import java.util.List;
+
 /**
  * @author cjq
  * @Date 20/4/2021
@@ -12,6 +14,9 @@ import com.sinata.hi_ui.banner.indicator.HiIndicator;
  * @Describe:
  */
 public interface IHiBanner {
+    void setBannerData(int layoutResId, @NonNull List<? extends HiBannerMo> models);
+
+    void setBannerData(@NonNull List<? extends HiBannerMo> models);
 
     void setHiIndicator(HiIndicator<?> hiIndicator);
 
@@ -21,7 +26,7 @@ public interface IHiBanner {
 
     void setIntervalTime(int intervalTime);
 
-    void setBindAdapter(IBannerAdapter iBinderAdapter);
+    void setBindAdapter(IBindAdapter iBinderAdapter);
 
     void setOnPageChangeListener(ViewPager.OnPageChangeListener onPageChangeListener);
 

@@ -3,11 +3,13 @@ package com.sinata.framework;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.os.strictmode.IntentReceiverLeakedViolation;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.sinata.common.ui.component.HiBaseActivity;
+import com.sinata.framework.activity.HiBannerActivity;
 import com.sinata.framework.activity.HiRefreshTopActivity;
 import com.sinata.framework.activity.HiTabBottomActivity;
 import com.sinata.framework.activity.HiTabTopDemoActivity;
@@ -41,6 +43,10 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
 
     public void onRefreshClick(View view){
         startActivity(new Intent(this, HiRefreshTopActivity.class));
+    }
+
+    public void onBannerClick(View view){
+        startActivity(new Intent(this, HiBannerActivity.class));
     }
 
 

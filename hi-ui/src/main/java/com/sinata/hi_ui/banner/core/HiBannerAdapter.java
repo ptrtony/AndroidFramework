@@ -22,7 +22,7 @@ public class HiBannerAdapter extends PagerAdapter {
     private Context mContext;
     private SparseArray<HiBannerViewHolder> mCacheViews;
     private IHiBanner.OnBannerClickListener mOnBannerClickListener;
-    private IBannerAdapter mBinderAdapter;
+    private IBindAdapter mBinderAdapter;
     private List<? extends HiBannerMo> models;
 
 
@@ -39,7 +39,7 @@ public class HiBannerAdapter extends PagerAdapter {
     private int mLayoutResId = -1;
 
 
-    public HiBannerAdapter(Context context) {
+    public  HiBannerAdapter(Context context) {
         this.mContext = context;
     }
 
@@ -71,7 +71,7 @@ public class HiBannerAdapter extends PagerAdapter {
         this.mLayoutResId = layoutResId;
     }
 
-    public void setAdapter(IBannerAdapter bannerAdapter) {
+    public void setBindAdapter(IBindAdapter bannerAdapter) {
         this.mBinderAdapter = bannerAdapter;
     }
 
@@ -102,7 +102,6 @@ public class HiBannerAdapter extends PagerAdapter {
         return Integer.MAX_VALUE / 2 - (Integer.MAX_VALUE / 2) % getRealCount();
     }
 
-
     /**
      * 获取真实轮播的幻灯片数量
      *
@@ -127,16 +126,16 @@ public class HiBannerAdapter extends PagerAdapter {
             realPosition = position % getRealCount();
         }
         HiBannerViewHolder viewHolder = mCacheViews.get(realPosition);
-        if (container.equals(viewHolder.rootView.getParent())) {
-            container.removeView(viewHolder.rootView);
+        if (container.equals(viewHolder.getRootView().getParent())) {
+            container.removeView(viewHolder.getRootView());
         }
         //绑定数据
         onBind(viewHolder, models.get(realPosition), realPosition);
-        if (viewHolder.rootView.getParent() != null) {
-            ((ViewGroup) viewHolder.rootView.getParent()).removeView(viewHolder.rootView);
+        if (viewHolder.getRootView().getParent() != null) {
+            ((ViewGroup) viewHolder.getRootView().getParent()).removeView(viewHolder.getRootView());
         }
-        container.addView(viewHolder.rootView);
-        return super.instantiateItem(container, position);
+        container.addView(viewHolder.getRootView());
+        return container;
     }
 
     @Override
@@ -147,8 +146,6 @@ public class HiBannerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        super.destroyItem(container, position, object);
-
     }
 
     protected void onBind(HiBannerAdapter.HiBannerViewHolder viewHolder, HiBannerMo mo, int position) {

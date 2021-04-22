@@ -8,9 +8,12 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import com.sinata.hi_ui.R;
 import com.sinata.hi_ui.banner.core.HiBannerDelegate;
-import com.sinata.hi_ui.banner.core.IBannerAdapter;
+import com.sinata.hi_ui.banner.core.HiBannerMo;
+import com.sinata.hi_ui.banner.core.IBindAdapter;
 import com.sinata.hi_ui.banner.core.IHiBanner;
 import com.sinata.hi_ui.banner.indicator.HiIndicator;
+
+import java.util.List;
 
 /**
  * 核心问题：
@@ -49,6 +52,16 @@ public class HiBanner extends FrameLayout implements IHiBanner {
     }
 
     @Override
+    public void setBannerData(int layoutResId, @NonNull List<? extends HiBannerMo> models) {
+        delegate.setBannerData(layoutResId, models);
+    }
+
+    @Override
+    public void setBannerData(@NonNull List<? extends HiBannerMo> models) {
+        delegate.setBannerData(models);
+    }
+
+    @Override
     public void setHiIndicator(HiIndicator<?> hiIndicator) {
         delegate.setHiIndicator(hiIndicator);
     }
@@ -69,7 +82,7 @@ public class HiBanner extends FrameLayout implements IHiBanner {
     }
 
     @Override
-    public void setBindAdapter(IBannerAdapter iBinderAdapter) {
+    public void setBindAdapter(IBindAdapter iBinderAdapter) {
         delegate.setBindAdapter(iBinderAdapter);
     }
 

@@ -130,7 +130,7 @@ public class HiViewPager extends ViewPager {
         nextPosition = getCurrentItem() + 1;
         //当nextPosition大于getAdapter()的最大数量时重新开始
         if (nextPosition >= getAdapter().getCount()) {
-//            nextPosition =
+            nextPosition = ((HiBannerAdapter)getAdapter()).getFirstItem();
         }
         setCurrentItem(nextPosition, true);
         return nextPosition;

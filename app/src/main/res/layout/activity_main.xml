@@ -37,4 +37,13 @@
         android:text="onRefreshClick"
         android:background="#009688"
         android:onClick="onRefreshClick"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="13sp"
+        android:background="#009688"
+        android:onClick="onBannerClick"
+        android:text="toBannerActivity"/>
 </LinearLayout>
