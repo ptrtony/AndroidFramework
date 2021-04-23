@@ -135,4 +135,19 @@ public class HiViewPager extends ViewPager {
         setCurrentItem(nextPosition, true);
         return nextPosition;
     }
+
+
+    /**
+     * 设置ViewPager的滚动速度
+     * @param duration page切换的时长
+     */
+    public void setScrollDuration(int duration){
+        try{
+            Field field = ViewPager.class.getDeclaredField("mScroller");
+            field.setAccessible(true);
+            field.set(this,new HiBannerScroller(getContext(),duration));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

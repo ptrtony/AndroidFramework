@@ -95,4 +95,9 @@ public class HiBanner extends FrameLayout implements IHiBanner {
     public void setOnBannerClickListener(OnBannerClickListener onBannerClickListener) {
         delegate.setOnBannerClickListener(onBannerClickListener);
     }
+
+    @Override
+    public void setScrollerDuration(int duration) {
+        delegate.setScrollerDuration(duration);
+    }
 }

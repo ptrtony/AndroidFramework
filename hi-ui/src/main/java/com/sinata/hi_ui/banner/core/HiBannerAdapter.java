@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -159,6 +161,7 @@ public class HiBannerAdapter extends PagerAdapter {
             mBinderAdapter.onBind(viewHolder, mo, position);
         }
     }
+
 
 
     public static class HiBannerViewHolder {

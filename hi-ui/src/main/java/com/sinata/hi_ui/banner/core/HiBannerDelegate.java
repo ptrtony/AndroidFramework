@@ -31,6 +31,7 @@ public class HiBannerDelegate implements IHiBanner, ViewPager.OnPageChangeListen
     private int mIntervalTime = 5000;
     private IHiBanner.OnBannerClickListener mOnBannerClickListener;
     private HiViewPager mHiViewPager;
+    private int mScrollDuration;
 
     public HiBannerDelegate(Context context, HiBanner hiBanner) {
         this.mContext = context;
@@ -67,7 +68,7 @@ public class HiBannerDelegate implements IHiBanner, ViewPager.OnPageChangeListen
 
     @Override
     public void setIntervalTime(int intervalTime) {
-        if (intervalTime>0){
+        if (intervalTime > 0) {
             this.mIntervalTime = intervalTime;
         }
     }
@@ -85,6 +86,13 @@ public class HiBannerDelegate implements IHiBanner, ViewPager.OnPageChangeListen
     @Override
     public void setOnBannerClickListener(OnBannerClickListener onBannerClickListener) {
         this.mOnBannerClickListener = onBannerClickListener;
+    }
+
+    @Override
+    public void setScrollerDuration(int duration) {
+        this.mScrollDuration = duration;
+        if (mHiViewPager != null && duration > 0)
+            mHiViewPager.setScrollDuration(duration);
     }
 
     private void init(int layoutResId) {
@@ -106,8 +114,8 @@ public class HiBannerDelegate implements IHiBanner, ViewPager.OnPageChangeListen
         mHiViewPager.addOnPageChangeListener(this);
         mHiViewPager.setAutoPlay(mAutoPlay);
         mHiViewPager.setIntervalTime(mIntervalTime);
-
         mHiViewPager.setAdapter(mHiBannerAdapter);
+        if (mScrollDuration > 0) mHiViewPager.setScrollDuration(mScrollDuration);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         if ((mLoop || mAutoPlay) && mHiBannerAdapter.getRealCount() != 0) {
             //无限轮播关键点：使第一张能反向滑动到最后一张，以达到无限滚动的效果
@@ -118,32 +126,33 @@ public class HiBannerDelegate implements IHiBanner, ViewPager.OnPageChangeListen
         mHiBanner.removeAllViews();
         mHiBanner.addView(mHiViewPager, layoutParams);
         mHiBanner.addView(mHiIndicator.get(), layoutParams);
+//        mHiViewPager.setBackgroundResource(android.R.color.holo_red_dark);
     }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        if (null != mOnPageChangeListener && mHiBannerAdapter.getRealCount()!=0){
-            mOnPageChangeListener.onPageScrolled(position % mHiBannerAdapter.getRealCount(),positionOffset,positionOffsetPixels);
+        if (null != mOnPageChangeListener && mHiBannerAdapter.getRealCount() != 0) {
+            mOnPageChangeListener.onPageScrolled(position % mHiBannerAdapter.getRealCount(), positionOffset, positionOffsetPixels);
         }
     }
 
     @Override
     public void onPageSelected(int position) {
-        if (mHiBannerAdapter.getRealCount() == 0){
+        if (mHiBannerAdapter.getRealCount() == 0) {
             return;
         }
         position = position % mHiBannerAdapter.getRealCount();
-        if (null != mOnPageChangeListener){
+        if (null != mOnPageChangeListener) {
             mOnPageChangeListener.onPageSelected(position);
         }
-        if (null != mHiIndicator){
-            mHiIndicator.onPointChange(position,mHiBannerAdapter.getRealCount());
+        if (null != mHiIndicator) {
+            mHiIndicator.onPointChange(position, mHiBannerAdapter.getRealCount());
         }
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        if (null != mOnPageChangeListener){
+        if (null != mOnPageChangeListener) {
             mOnPageChangeListener.onPageScrollStateChanged(state);
         }
     }
