@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.strictmode.IntentReceiverLeakedViolation;
 import android.view.View;
+import android.view.ViewTreeObserver;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,7 +30,12 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.btn_bottom).getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
 
+            }
+        });
     }
 
 
@@ -48,6 +54,8 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
     public void onBannerClick(View view){
         startActivity(new Intent(this, HiBannerActivity.class));
     }
+
+
 
 
 }

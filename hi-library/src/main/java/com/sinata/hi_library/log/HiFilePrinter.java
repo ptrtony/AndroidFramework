@@ -39,7 +39,6 @@ public class HiFilePrinter implements HiLogPrinter {
         cleanExpiredLog();
     }
 
-
     /**
      * 创建HiFilePrinter
      *

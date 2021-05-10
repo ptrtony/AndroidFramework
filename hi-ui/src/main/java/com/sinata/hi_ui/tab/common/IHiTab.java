@@ -5,13 +5,11 @@ import androidx.annotation.Px;
 
 /**
  * @author cjq
- * @Date 11/4/2021
- * @Time 9:26 PM
+ * @Date 10/5/2021
+ * @Time 6:21 PM
  * @Describe:
  */
-
-public interface IHiTab<D> extends IHiTabLayout.OnTabSelectedListener<D> {
-
+public interface IHiTab<D> extends IHiTabLayout.OnTabSelectedListener<D>{
     void setHiTabInfo(@NonNull D data);
 
     /**

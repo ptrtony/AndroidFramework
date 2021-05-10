@@ -1,18 +1,16 @@
 package com.sinata.hi_ui.tab.bottom;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
 import com.sinata.hi_ui.R;
@@ -20,70 +18,84 @@ import com.sinata.hi_ui.tab.common.IHiTab;
 
 /**
  * @author cjq
- * @Date 11/4/2021
- * @Time 10:08 PM
+ * @Date 10/5/2021
+ * @Time 6:03 PM
  * @Describe:
  */
 public class HiTabBottom extends RelativeLayout implements IHiTab<HiTabBottomInfo<?>> {
-
-    private HiTabBottomInfo<?> tabInfo;
+    private  HiTabBottomInfo<?> tabInfo;
     private ImageView tabImageView;
     private TextView tabIconView;
     private TextView tabNameView;
 
     public HiTabBottom(Context context) {
-        this(context, null);
+        this(context,null);
     }
 
     public HiTabBottom(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs,0);
     }
 
     public HiTabBottom(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(context);
     }
 
-    private void init() {
-        LayoutInflater.from(getContext()).inflate(R.layout.hi_tab_bottom, this);
+    public void init(Context context){
+        LayoutInflater.from(context).inflate(R.layout.hi_tab_bottom,this,false);
         tabImageView = findViewById(R.id.iv_image);
         tabIconView = findViewById(R.id.tv_icon);
         tabNameView = findViewById(R.id.tv_name);
-
     }
 
     @Override
     public void setHiTabInfo(@NonNull HiTabBottomInfo<?> data) {
         this.tabInfo = data;
-        inflateInfo(false, true);
+        inflateTabInfo(false,true);
     }
 
-    private void inflateInfo(boolean selected, boolean init) {
-        if (tabInfo.tabType == HiTabBottomInfo.TabType.ICON) {
+    private void inflateTabInfo(boolean selected, boolean init) {
+        if (tabInfo.tabType == TabType.ICON){
             if (init){
-                tabImageView.setVisibility(GONE);
-                tabIconView.setVisibility(VISIBLE);
-                Typeface typeface = Typeface.createFromAsset(getResources().getAssets(), tabInfo.iconFont);
+                tabImageView.setVisibility(View.GONE);
+                tabIconView.setVisibility(View.VISIBLE);
+                Typeface typeface = Typeface.createFromAsset(getResources().getAssets(),tabInfo.iconFont);
                 tabIconView.setTypeface(typeface);
-                if (!TextUtils.isEmpty(tabInfo.name)) {
+                if (!tabInfo.name.isEmpty()){
                     tabNameView.setText(tabInfo.name);
                 }
             }
 
-            if (selected) {
-                tabIconView.setText(TextUtils.isEmpty(tabInfo.selectIconName) ? tabInfo.defaultIconName : tabInfo.selectIconName);
-                tabIconView.setTextColor(getTextColor(tabInfo.tintColor));
-                tabNameView.setTextColor(getTextColor(tabInfo.tintColor));
+            if (selected){
+                if (tabInfo.selectIconName.isEmpty()){
+                    tabIconView.setText( tabInfo.defaultIconName);
+                }else{
+                    tabIconView.setText( tabInfo.selectIconName);
+                }
+                if (tabInfo.tintColor instanceof String){
+                    tabIconView.setTextColor(Color.parseColor((String) tabInfo.tintColor));
+                    tabNameView.setTextColor(Color.parseColor((String) tabInfo.tintColor));
+                }else{
+                    tabIconView.setTextColor((Integer) tabInfo.tintColor);
+                    tabNameView.setTextColor((Integer) tabInfo.tintColor);
+                }
+
             }else{
                 tabIconView.setText(tabInfo.defaultIconName);
-                tabIconView.setTextColor(getTextColor(tabInfo.defaultColor));
-                tabNameView.setTextColor(getTextColor(tabInfo.defaultColor));
+                if (tabInfo.defaultColor instanceof String){
+                    tabIconView.setTextColor(Color.parseColor((String) tabInfo.defaultColor));
+                    tabNameView.setTextColor(Color.parseColor((String) tabInfo.defaultColor));
+                }else{
+                    tabIconView.setTextColor((Integer) tabInfo.defaultColor);
+                    tabNameView.setTextColor((Integer) tabInfo.defaultColor);
+                }
+
             }
-        }else if (tabInfo.tabType == HiTabBottomInfo.TabType.BITMAP){
+        }else if (tabInfo.tabType == TabType.BITMAP){
             if (init){
-                tabImageView.setVisibility(VISIBLE);
-                tabIconView.setVisibility(GONE);
-                if (!TextUtils.isEmpty(tabInfo.name)){
+                tabImageView.setVisibility(View.VISIBLE);
+                tabIconView.setVisibility(View.GONE);
+                if (!tabInfo.name.isEmpty()){
                     tabNameView.setText(tabInfo.name);
                 }
             }
@@ -93,19 +105,14 @@ public class HiTabBottom extends RelativeLayout implements IHiTab<HiTabBottomInf
                 tabImageView.setImageBitmap(tabInfo.defaultBitmap);
             }
         }
-
     }
 
-    /**
-     * 改变某个icon高度
-     * @param height
-     */
     @Override
     public void resetTabHeight(int height) {
-        ViewGroup.LayoutParams params =  getLayoutParams();
+        LayoutParams params = (LayoutParams) getLayoutParams();
         params.height = height;
         setLayoutParams(params);
-        getTabNameView().setVisibility(View.GONE);
+        tabNameView.setVisibility(View.GONE);
     }
 
     @Override
@@ -113,12 +120,7 @@ public class HiTabBottom extends RelativeLayout implements IHiTab<HiTabBottomInf
         if (preInfo != tabInfo && nextInfo != tabInfo || preInfo == nextInfo){
             return;
         }
-
-        if (preInfo == tabInfo){
-            inflateInfo(false,false);
-        }else{
-            inflateInfo(true,false);
-        }
+        inflateTabInfo(preInfo != tabInfo,false);
     }
 
     public HiTabBottomInfo<?> getTabInfo() {
@@ -151,14 +153,5 @@ public class HiTabBottom extends RelativeLayout implements IHiTab<HiTabBottomInf
 
     public void setTabNameView(TextView tabNameView) {
         this.tabNameView = tabNameView;
-    }
-
-    @ColorInt
-    private int getTextColor(Object color) {
-        if (color instanceof String) {
-            return Color.parseColor((String) color);
-        }
-
-        return (int) color;
     }
 }

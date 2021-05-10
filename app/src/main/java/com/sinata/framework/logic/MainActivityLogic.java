@@ -23,10 +23,11 @@ import com.sinata.framework.fragment.CollectFragment;
 import com.sinata.framework.fragment.HomePageFragment;
 import com.sinata.framework.fragment.MeFragment;
 import com.sinata.framework.fragment.RecommendFragment;
-import com.sinata.framework.log.utils.HiDisplayUtil;
+import com.sinata.hi_library.log.utils.HiDisplayUtil;
+import com.sinata.hi_ui.bottom.HiTabBottomLayout;
 import com.sinata.hi_ui.tab.bottom.HiTabBottom;
 import com.sinata.hi_ui.tab.bottom.HiTabBottomInfo;
-import com.sinata.hi_ui.tab.bottom.HiTabBottomLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 

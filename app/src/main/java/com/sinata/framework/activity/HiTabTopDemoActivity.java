@@ -10,6 +10,7 @@ import com.sinata.framework.R;
 import com.sinata.hi_ui.tab.common.IHiTabLayout;
 import com.sinata.hi_ui.top.HiTabTopInfo;
 import com.sinata.hi_ui.top.HiTabTopLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 

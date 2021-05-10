@@ -4,9 +4,9 @@ import android.app.Application
 import androidx.multidex.MultiDex
 import com.google.gson.Gson
 import com.sinata.common.ui.component.HiBaseApplication
-import com.sinata.framework.log.HiConsolePrinter
-import com.sinata.framework.log.HiLogConfig
-import com.sinata.framework.log.HiLogManager
+import com.sinata.hi_library.log.HiConsolePrinter
+import com.sinata.hi_library.log.HiLogConfig
+import com.sinata.hi_library.log.HiLogManager
 
 /**
 @author cjq
@@ -40,7 +40,7 @@ class HiApplication : HiBaseApplication() {
             override fun stackTraceDepth(): Int {
                 return 5
             }
-        },HiConsolePrinter())
+        }, HiConsolePrinter())
     }
 
 }

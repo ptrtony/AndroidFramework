@@ -21,7 +21,7 @@ import com.sinata.hi_ui.R;
  * @Time 8:49 AM
  * @Describe: 圆点指示器
  */
-public class HiCircleIndicator extends FrameLayout implements HiIndicator<FrameLayout> {
+public class HiCircleIndicator_java extends FrameLayout implements HiIndicator<FrameLayout> {
 
     private static final int VWC = LayoutParams.WRAP_CONTENT;
 
@@ -49,21 +49,21 @@ public class HiCircleIndicator extends FrameLayout implements HiIndicator<FrameL
 
 
 
-    public HiCircleIndicator(@NonNull Context context) {
+    public HiCircleIndicator_java(@NonNull Context context) {
         this(context,null);
     }
 
-    public HiCircleIndicator(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public HiCircleIndicator_java(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs,0);
         init();
     }
 
     private void init() {
-        mPointLeftRightPadding = HiDisplayUtil.dp2px(getContext(),5);
-        mPointTopBottomPadding = HiDisplayUtil.dp2px(getContext(),15);
+        mPointLeftRightPadding = HiDisplayUtil.dp2px(getContext().getResources(),5);
+        mPointTopBottomPadding = HiDisplayUtil.dp2px(getContext().getResources(),15);
     }
 
-    public HiCircleIndicator(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public HiCircleIndicator_java(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

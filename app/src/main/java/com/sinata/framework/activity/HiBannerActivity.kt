@@ -8,9 +8,9 @@ import com.bumptech.glide.Glide
 import com.sinata.common.ui.component.HiBaseActivity
 import com.sinata.framework.R
 import com.sinata.framework.entity.BannerMo
-import com.sinata.framework.log.HiLog
+import com.sinata.hi_library.log.HiLog
 import com.sinata.hi_ui.banner.HiBanner
-import com.sinata.hi_ui.banner.indicator.HiCircleIndicator
+import com.sinata.hi_ui.banner.indicator.HiNumberIndicator
 
 class HiBannerActivity : HiBaseActivity() {
     private var urls = arrayOf(
@@ -51,7 +51,11 @@ class HiBannerActivity : HiBaseActivity() {
         }
         banner.setAutoPlay(isAuoPlay)
         banner.setIntervalTime(2000)
-        banner.setHiIndicator(HiCircleIndicator(this))
+        banner.setHiIndicator(
+            HiNumberIndicator(
+                this
+            )
+        )
         banner.setBannerData(R.layout.banner_item_layout,mos)
         banner.setBindAdapter { viewHolder, mo, position ->
             val imageView:ImageView = viewHolder.findViewById(R.id.iv_image)

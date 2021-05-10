@@ -8,7 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.sinata.hi_ui.R;
 import com.sinata.hi_ui.banner.HiBanner;
-import com.sinata.hi_ui.banner.indicator.HiCircleIndicator;
+import com.sinata.hi_ui.banner.indicator.HiCircleIndicator_java;
 import com.sinata.hi_ui.banner.indicator.HiIndicator;
 
 import java.util.List;
@@ -101,7 +101,7 @@ public class HiBannerDelegate implements IHiBanner, ViewPager.OnPageChangeListen
         }
 
         if (mHiIndicator == null) {
-            mHiIndicator = new HiCircleIndicator(mContext);
+            mHiIndicator = new HiCircleIndicator_java(mContext);
         }
         mHiIndicator.onInflate(mHiBannerMos.size());
         mHiBannerAdapter.setLayoutResId(layoutResId);
