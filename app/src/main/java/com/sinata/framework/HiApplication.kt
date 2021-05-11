@@ -1,12 +1,12 @@
 package com.sinata.framework
 
-import android.app.Application
 import androidx.multidex.MultiDex
 import com.google.gson.Gson
 import com.sinata.common.ui.component.HiBaseApplication
 import com.sinata.hi_library.log.HiConsolePrinter
 import com.sinata.hi_library.log.HiLogConfig
 import com.sinata.hi_library.log.HiLogManager
+import com.sinata.framework.lifecycleDemo.ActivityManager
 
 /**
 @author cjq
@@ -19,6 +19,7 @@ class HiApplication : HiBaseApplication() {
     override fun onCreate() {
         super.onCreate()
         // 主要是添加下面这句代码
+        ActivityManager.instance.init(this)
         MultiDex.install(this);
         HiLogManager.init(object : HiLogConfig() {
             override fun injectJsonParser(): JsonParser {

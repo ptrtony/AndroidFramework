@@ -5,6 +5,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
+        android:id="@+id/tv_jump_next_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="120dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:background="#EC0505"
+        android:text="跳转到下一页"
+        android:padding="10dp"/>
+    <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

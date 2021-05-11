@@ -190,10 +190,64 @@ class Solution {
     //左括号必须用相同类型的右括号闭合。
     //左括号必须以正确的顺序闭合
     public static boolean isValid(String s) {
-        int n = s.length()/2;
+        int n = s.length() / 2;
         for (int i = 0; i < n; i++) {
-            s = s.replace("()","").replace("{}","").replace("[]","");
+            s = s.replace("()", "").replace("{}", "").replace("[]", "");
         }
         return s.length() == 0;
     }
+
+
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+        ListNode res = l1.val < l2.val ? l1 : l2;
+        res.next = mergeTwoLists(res.next, l1.val >= l2.val ? l1 : l2);
+        return res;
+    }
+
+    public int removeDuplicates(int[] nums) {
+        if (nums.length < 2) return nums.length;
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[j] != nums[i]) nums[++j] = nums[i];
+        }
+        return ++j;
+    }
+
+    public static int removeElement(int[] nums, int val) {
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) nums[j++] = nums[i];
+        }
+        System.out.println(nums);
+        return j;
+    }
+
+    public int strStr(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }
+
+    public int searchInsert(int[] nums, int target) {
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] >= target) {
+                index = i;
+                break;
+            }
+        }
+        if (nums[nums.length - 1] < target) {
+            index = nums.length;
+        }
+        return index;
+    }
+
+
+//    public int[] decode(int[] encoded) {
+//        int[] perm = new int[encoded.length];
+//        for (int i = 0; i < encoded.length; i++) {
+//            perm[i] = encoded[i] - perm[i + 1];
+//        }
+//    }
+
 }
