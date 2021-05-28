@@ -1,3 +1,6 @@
+include ':navi-annotation'
+include ':nav-compiler'
+include ':nav-annotation'
 include ':common'
 include ':hi-ui'
 include ':hi-library'

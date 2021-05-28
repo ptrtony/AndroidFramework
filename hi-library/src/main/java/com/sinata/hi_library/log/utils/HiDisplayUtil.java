@@ -23,6 +23,11 @@ public class HiDisplayUtil{
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pxValue, Resources.getSystem().getDisplayMetrics());
     }
 
+
+    public static int dp2Px(float pxValue) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, pxValue, Resources.getSystem().getDisplayMetrics());
+    }
+
     public static int px2sp(float pxValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, pxValue, Resources.getSystem().getDisplayMetrics());
     }

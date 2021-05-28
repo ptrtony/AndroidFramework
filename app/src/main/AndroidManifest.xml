@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-feature android:name="android.hardware.camera.any" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".HiApplication"
         android:allowBackup="true"
@@ -12,24 +16,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FrameWork">
-        <activity android:name=".lifecycleDemo.SecondActivity"></activity>
-        <activity
-            android:name=".lifecycleDemo.FirstActivity"
-            android:label="@string/title_activity_first">
-
-        </activity>
-        <activity android:name=".arithmatic.ArithmaticActivity">
+        <activity android:name=".big_gallery.BigGalleryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".camera.CameraDemoActivity"></activity>
+        <activity android:name=".componse.ComposeDemoActivity" />
+        <activity android:name=".navigator.ui.NavigationDemoActivity"></activity>
+        <activity
+            android:name=".navigator.MainActivity"
+            android:label="@string/title_activity_main" />
+        <activity android:name=".recyclerview2.GalleryActivity"></activity>
+        <activity android:name=".recyclerview.RecyclerViewActivity" />
+        <activity android:name=".lazy_fragment.ViewPagerActivity" />
+        <activity android:name=".lazy_fragment.fragment.LazyViewPagerActivity" />
+        <activity android:name=".lazy_fragment.fragment.LazyViewPager2Activity" />
+        <activity android:name=".lifecycleDemo.SecondActivity" />
+        <activity
+            android:name=".lifecycleDemo.FirstActivity"
+            android:label="@string/title_activity_first" />
+        <activity android:name=".arithmatic.ArithmaticActivity" />
         <activity android:name=".activity.HiBannerActivity" />
         <activity android:name=".activity.HiTabBottomActivity" />
         <activity android:name=".activity.HiTabTopDemoActivity" />
         <activity android:name=".activity.HiRefreshTopActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+        </activity>
     </application>
 
 </manifest>

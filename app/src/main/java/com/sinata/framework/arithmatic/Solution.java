@@ -1,6 +1,9 @@
 package com.sinata.framework.arithmatic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +23,6 @@ class Solution {
      * 解释：342 + 465 = 807.
      */
     public static void main(String[] args) {
-//        ListNode l1 = new ListNode(2);
-//        ListNode l2;
         lengthOfLongestSubstring("abbsacsd");
     }
 
@@ -243,11 +244,65 @@ class Solution {
     }
 
 
-//    public int[] decode(int[] encoded) {
-//        int[] perm = new int[encoded.length];
-//        for (int i = 0; i < encoded.length; i++) {
-//            perm[i] = encoded[i] - perm[i + 1];
+    public int paintingPlan(int n, int k) {
+        if (k == 0 || k == n * n) return 1;
+        int res = 0;
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= n; j++) {
+                if (i * n + j * n - i * j == k) {
+                    res += compute(n, i) * compute(n, j);
+                }
+            }
+        }
+        return res;
+
+    }
+
+    public int compute(int n, int val) {
+        if (val == 0 || val == n) return 1;
+        else return com(n) / com(val) / com(n - val);
+    }
+
+    public int com(int n) {
+        int res = 1;
+        for (int i = n; i > 0; i--) {
+            res *= i;
+        }
+        return res;
+    }
+
+//    public int purchasePlans(int[] nums, int target) {
+//        //首先进行升序排序
+//        int mod  = 1_000_000_007;
+//        Arrays.sort(nums);
+//        int res = 0;
+//        int left = 0;
+//        int right = nums.length - 1;
+//        while (left < right){
+//            if (nums[left] + nums[right] >= target){
+//                right --;
+//            }else{
+//                res = (res +  right - left) % mod;
+//                left ++;
+//            }
 //        }
+//        return res % mod;
 //    }
+
+
+    public int calculate(String s) {
+        if (s.length() == 0 )return 1;
+        int x = 1,y = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == 'A' || ch == 'a'){
+                x = 2 * x + y;
+            }else if (ch == 'B' || ch == 'b'){
+                y = 2 * y + x;
+            }
+        }
+        return x + y;
+    }
+    
 
 }

@@ -14,6 +14,8 @@ import com.sinata.framework.activity.HiBannerActivity;
 import com.sinata.framework.activity.HiRefreshTopActivity;
 import com.sinata.framework.activity.HiTabBottomActivity;
 import com.sinata.framework.activity.HiTabTopDemoActivity;
+import com.sinata.framework.camera.CameraDemoActivity;
+import com.sinata.framework.fragment.HomePageFragment;
 import com.sinata.framework.logic.MainActivityLogic;
 
 /**
@@ -36,6 +38,13 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
 
             }
         });
+
+////
+////        //显示意图
+//        startActivity(new Intent(MainActivity.this, HomePageFragment.class));
+////
+////        //隐式
+//        startActivity(new Intent("home:fhsjfjsa"));
     }
 
 
@@ -55,7 +64,9 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
         startActivity(new Intent(this, HiBannerActivity.class));
     }
 
-
+    public void onCameraClick(View view){
+        startActivity(new Intent(this, CameraDemoActivity.class));
+    }
 
 
 }
