@@ -59,6 +59,7 @@ class ThreadDemo1 {
         };
 
 //        handler.sendEmptyMessage()
+        //
     }
 
 
