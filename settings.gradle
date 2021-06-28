@@ -1,3 +1,4 @@
+include ':JavaFromWork'
 include ':navi-annotation'
 include ':nav-compiler'
 include ':nav-annotation'

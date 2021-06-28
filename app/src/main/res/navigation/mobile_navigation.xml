@@ -5,6 +5,14 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
+    <include>
+
+    </include>
+
+    <activity android:name="com.sinata.framework.camera.CameraDemoActivity"
+        app:action="@string/appbar_scrolling_view_behavior"
+        app:data="@string/appbar_scrolling_view_behavior">
+    </activity>
 
     <fragment
         android:id="@+id/navigation_home"

@@ -16,10 +16,9 @@ class NavigationDemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation_demo)
         val navView = findViewById<BottomNavigationView>(R.id.nav_view)
-//        val navHostFragment = findNavController(R.id.nav_host_fragment)
         navController = findNavController(R.id.nav_host_fragment)
-        val fragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
-        NavUtil.buildNavGraph(this,fragment?.childFragmentManager,navController,R.id.nav_host_fragment)
         navView.setupWithNavController(navController!!)
+//        val fragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+//        NavUtil.buildNavGraph(this,fragment?.childFragmentManager,navController,R.id.nav_host_fragment)
     }
 }

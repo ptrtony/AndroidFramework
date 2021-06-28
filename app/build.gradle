@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    //模块build.gradle
+    id 'com.alibaba.arouter'
 }
 
 android {
@@ -21,6 +23,12 @@ android {
         //添加此行
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
     }
 
     buildTypes {
@@ -50,6 +58,15 @@ android {
 //        }
 //    }
 }
+
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+
 def camerax_version = "1.0.0"
 dependencies {
 
@@ -95,4 +112,10 @@ dependencies {
 //    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
     api project(':navi-annotation')
     kapt project(':nav-compiler')
+
+    api 'com.alibaba:arouter-api:1.5.0'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
 }
+
+
+
