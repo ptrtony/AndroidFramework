@@ -20,6 +20,5 @@ class LazyViewPager2Activity : AppCompatActivity() {
         val viewPager2 = findViewById<ViewPager2>(R.id.view_pager2)
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager2.adapter = ViewPager2Adapter(this,fragments)
-
     }
 }

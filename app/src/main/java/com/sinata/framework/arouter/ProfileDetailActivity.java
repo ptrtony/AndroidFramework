@@ -2,7 +2,7 @@ package com.sinata.framework.arouter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
+//import com.alibaba.android.arouter.facade.annotation.Route;
 
 /**
  * Title:
@@ -15,7 +15,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
  */
 
 
-@Route(path = "/profile/detail",extras = ARouterFlag.FLAG_LOGIN | ARouterFlag.FLAG_VIP)
+//@Route(path = "/profile/detail",extras = ARouterFlag.FLAG_LOGIN | ARouterFlag.FLAG_VIP)
 public class ProfileDetailActivity extends AppCompatActivity {
 
 }

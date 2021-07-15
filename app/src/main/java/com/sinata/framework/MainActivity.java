@@ -9,6 +9,8 @@ import android.view.ViewTreeObserver;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.gson.JsonObject;
 import com.sinata.common.ui.component.HiBaseActivity;
 import com.sinata.framework.activity.HiBannerActivity;
 import com.sinata.framework.activity.HiRefreshTopActivity;
@@ -16,7 +18,13 @@ import com.sinata.framework.activity.HiTabBottomActivity;
 import com.sinata.framework.activity.HiTabTopDemoActivity;
 import com.sinata.framework.camera.CameraDemoActivity;
 import com.sinata.framework.fragment.HomePageFragment;
+import com.sinata.framework.http.ApiFactory;
+import com.sinata.framework.http.api.TestApi;
 import com.sinata.framework.logic.MainActivityLogic;
+import com.sinata.hi_library.restful.HiCallback;
+import com.sinata.hi_library.restful.HiResponse;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author cjq
@@ -45,6 +53,19 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
 ////
 ////        //隐式
 //        startActivity(new Intent("home:fhsjfjsa"));
+
+
+        ApiFactory.INSTANCE.create(TestApi.class).listCitys("imooc").enqueue(new HiCallback<JsonObject>() {
+            @Override
+            public void onSuccess(@NotNull HiResponse<JsonObject> data) {
+
+            }
+
+            @Override
+            public void onFailed(@NotNull Throwable throwable) {
+
+            }
+        });
     }
 
 

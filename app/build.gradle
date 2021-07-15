@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     //模块build.gradle
-    id 'com.alibaba.arouter'
+//    id 'com.alibaba.arouter'
 }
 
 android {
@@ -60,11 +60,11 @@ android {
 }
 
 
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
-}
+//kapt {
+//    arguments {
+//        arg("AROUTER_MODULE_NAME", project.getName())
+//    }
+//}
 
 
 def camerax_version = "1.0.0"
@@ -113,8 +113,11 @@ dependencies {
     api project(':navi-annotation')
     kapt project(':nav-compiler')
 
-    api 'com.alibaba:arouter-api:1.5.0'
-    kapt 'com.alibaba:arouter-compiler:1.2.2'
+//    api 'com.alibaba:arouter-api:1.5.0'
+//    kapt 'com.alibaba:arouter-compiler:1.2.2'
+
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
 }
 
 

@@ -17,11 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FrameWork">
         <activity android:name=".big_gallery.BigGalleryActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".camera.CameraDemoActivity"></activity>
         <activity android:name=".componse.ComposeDemoActivity" />
@@ -44,6 +40,11 @@
         <activity android:name=".activity.HiTabTopDemoActivity" />
         <activity android:name=".activity.HiRefreshTopActivity" />
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
