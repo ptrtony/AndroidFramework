@@ -97,7 +97,7 @@ class MethodParser(val baseUrl: String, method: Method, args: Array<Any>) {
             }
 
             val annotation = annotations[0]
-            if (annotation is Field) {
+            if (annotation is Filed) {
                 val key = annotation.value
                 parameters[key] = value.toString()
             } else if (annotation is Path) {
@@ -117,7 +117,7 @@ class MethodParser(val baseUrl: String, method: Method, args: Array<Any>) {
     private fun isPrimitive(value: Any): Boolean {
 
         //String
-        if (value.javaClass == String::class) {
+        if (value.javaClass == String::class.java) {
             return true
         }
 
@@ -138,7 +138,7 @@ class MethodParser(val baseUrl: String, method: Method, args: Array<Any>) {
     }
 
     private fun parseMethodReturnType(method: Method) {
-        if (method.returnType != HiCall::class) {
+        if (method.returnType != HiCall::class.java) {
             throw IllegalStateException(
                 String.format(
                     "method %s must be type of HiCall.class",

@@ -10,4 +10,6 @@
         <attr name="hoverColor" format="reference|color">
         </attr>
     </declare-styleable>
+
+
 </resources>

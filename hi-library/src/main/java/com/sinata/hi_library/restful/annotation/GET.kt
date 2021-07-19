@@ -1,15 +1,10 @@
 package com.sinata.hi_library.restful.annotation
 
-import java.lang.annotation.Retention
-import java.lang.annotation.RetentionPolicy
 
 /**
- * @GET("https://api.devio.org/as/")
- * fun test @Field("province") int provinceId
+ * @GET("/cities/all")
+ *fun test(@Filed("province") int provinceId)
  */
-
-
-
 @Target(AnnotationTarget.FUNCTION)
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(AnnotationRetention.RUNTIME)
 annotation class GET(val value: String)

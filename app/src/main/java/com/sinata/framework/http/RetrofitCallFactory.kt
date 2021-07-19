@@ -2,7 +2,6 @@ package com.sinata.framework.http
 
 import com.google.gson.reflect.TypeToken
 import com.sinata.hi_library.restful.*
-import com.sinata.hi_ui.ext.getTextView
 import okhttp3.*
 import org.json.JSONObject
 import retrofit2.Call

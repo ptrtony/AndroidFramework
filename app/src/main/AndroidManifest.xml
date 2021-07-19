@@ -22,9 +22,9 @@
         <activity android:name=".camera.CameraDemoActivity"></activity>
         <activity android:name=".componse.ComposeDemoActivity" />
         <activity android:name=".navigator.ui.NavigationDemoActivity"></activity>
-        <activity
-            android:name=".navigator.MainActivity"
-            android:label="@string/title_activity_main" />
+<!--        <activity-->
+<!--            android:name=".navigator.MainActivity"-->
+<!--            android:label="@string/title_activity_main" />-->
         <activity android:name=".recyclerview2.GalleryActivity"></activity>
         <activity android:name=".recyclerview.RecyclerViewActivity" />
         <activity android:name=".lazy_fragment.ViewPagerActivity" />
@@ -39,12 +39,15 @@
         <activity android:name=".activity.HiTabBottomActivity" />
         <activity android:name=".activity.HiTabTopDemoActivity" />
         <activity android:name=".activity.HiRefreshTopActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 

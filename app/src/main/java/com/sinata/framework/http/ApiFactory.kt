@@ -18,7 +18,6 @@ object ApiFactory {
     private val hiRestful:HiRestful = HiRestful(baseUrl,RetrofitCallFactory(baseUrl))
     init {
         hiRestful.addInterceptor(BizInterceptor())
-
     }
 
     fun <T> create(service:Class<T>):T{

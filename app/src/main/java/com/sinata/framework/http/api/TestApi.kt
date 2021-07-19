@@ -2,7 +2,7 @@ package com.sinata.framework.http.api
 
 import com.google.gson.JsonObject
 import com.sinata.hi_library.restful.HiCall
-import com.sinata.hi_library.restful.annotation.Field
+import com.sinata.hi_library.restful.annotation.Filed
 import com.sinata.hi_library.restful.annotation.GET
 
 /**
@@ -18,6 +18,6 @@ Company:成都博智维讯信息技术股份有限公司
  */
 interface TestApi {
 
-    @GET("citys")
-    fun listCitys(@Field("name") name: String): HiCall<JsonObject>
+    @GET(value = "citys")
+    fun listCitys(@Filed(value = "name") name: String): HiCall<JsonObject>
 }

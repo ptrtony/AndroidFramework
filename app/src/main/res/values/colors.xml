@@ -14,4 +14,8 @@
     <color name="light_blue_600">#FF039BE5</color>
     <color name="gray_400">#FFBDBDBD</color>
     <color name="gray_600">#FF757575</color>
+    <color name="color_298">#2983E5</color>
+    <color name="color_C1B">#999999</color>
+    <color name="color_dd2">#BA3830</color>
+    <color name="color_e2e">#E2E2E2</color>
 </resources>

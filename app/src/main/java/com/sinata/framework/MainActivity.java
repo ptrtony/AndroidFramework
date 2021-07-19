@@ -34,7 +34,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class MainActivity extends HiBaseActivity implements MainActivityLogic.ActivityProvider {
 
-    private MainActivityLogic mainActivityLogic;
+//    private MainActivityLogic mainActivityLogic;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,12 +58,12 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
         ApiFactory.INSTANCE.create(TestApi.class).listCitys("imooc").enqueue(new HiCallback<JsonObject>() {
             @Override
             public void onSuccess(@NotNull HiResponse<JsonObject> data) {
-
+                String msg = data.getMsg();
             }
 
             @Override
             public void onFailed(@NotNull Throwable throwable) {
-
+                throwable.printStackTrace();
             }
         });
     }
