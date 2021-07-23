@@ -46,7 +46,7 @@ class HiBannerActivity : HiBaseActivity() {
         val mos :MutableList<BannerMo> = arrayListOf()
         for (i in urls.indices){
             val mo = BannerMo()
-            mo.url = urls[i]
+            mo.bannerUrl = urls[i]
             mos.add(mo)
         }
         banner.setAutoPlay(isAuoPlay)
@@ -59,9 +59,9 @@ class HiBannerActivity : HiBaseActivity() {
         banner.setBannerData(R.layout.banner_item_layout,mos)
         banner.setBindAdapter { viewHolder, mo, position ->
             val imageView:ImageView = viewHolder.findViewById(R.id.iv_image)
-            Glide.with(HiBannerActivity@this).load(mo.url).into(imageView)
+            Glide.with(HiBannerActivity@this).load(mo.bannerUrl).into(imageView)
             val textView:TextView= viewHolder.findViewById(R.id.tv_title)
-            textView.text = mo.url
+            textView.text = mo.bannerUrl
             HiLog.dt("----position:",position.toString() + "url:" + urls[position])
         }
     }

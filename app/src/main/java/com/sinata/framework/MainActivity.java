@@ -2,12 +2,9 @@ package com.sinata.framework;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.os.strictmode.IntentReceiverLeakedViolation;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.gson.JsonObject;
@@ -17,9 +14,8 @@ import com.sinata.framework.activity.HiRefreshTopActivity;
 import com.sinata.framework.activity.HiTabBottomActivity;
 import com.sinata.framework.activity.HiTabTopDemoActivity;
 import com.sinata.framework.camera.CameraDemoActivity;
-import com.sinata.framework.fragment.HomePageFragment;
 import com.sinata.framework.http.ApiFactory;
-import com.sinata.framework.http.api.TestApi;
+import com.sinata.framework.http.api.AccountApi;
 import com.sinata.framework.logic.MainActivityLogic;
 import com.sinata.hi_library.restful.HiCallback;
 import com.sinata.hi_library.restful.HiResponse;
@@ -47,6 +43,8 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
             }
         });
 
+        startActivity(new Intent(this,LoginActivity.class));
+
 ////
 ////        //显示意图
 //        startActivity(new Intent(MainActivity.this, HomePageFragment.class));
@@ -54,18 +52,18 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
 ////        //隐式
 //        startActivity(new Intent("home:fhsjfjsa"));
 
-
-        ApiFactory.INSTANCE.create(TestApi.class).listCitys("imooc").enqueue(new HiCallback<JsonObject>() {
-            @Override
-            public void onSuccess(@NotNull HiResponse<JsonObject> data) {
-                String msg = data.getMsg();
-            }
-
-            @Override
-            public void onFailed(@NotNull Throwable throwable) {
-                throwable.printStackTrace();
-            }
-        });
+//
+//        ApiFactory.INSTANCE.create(AccountApi.class).listCitys("imooc").enqueue(new HiCallback<JsonObject>() {
+//            @Override
+//            public void onSuccess(@NotNull HiResponse<JsonObject> data) {
+//                String msg = data.getMsg();
+//            }
+//
+//            @Override
+//            public void onFailed(@NotNull Throwable throwable) {
+//                throwable.printStackTrace();
+//            }
+//        });
     }
 
 

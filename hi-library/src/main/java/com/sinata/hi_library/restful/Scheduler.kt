@@ -34,7 +34,7 @@ class Scheduler(val callFactory: HiCall.Factory, val interceptors: MutableList<H
             InterceptorChain(request, response).dispatch()
         }
 
-        override fun enqueue(callback: HiCallback<T>?) {
+        override fun enqueue(callback: HiCallback<T>) {
             dispatchInterceptor(request,null)
             delegate.enqueue(object:HiCallback<T>{
                 override fun onSuccess(data: HiResponse<T>) {

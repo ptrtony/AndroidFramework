@@ -6,7 +6,7 @@ import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
 
-class MethodParser(val baseUrl: String, method: Method, args: Array<Any>) {
+class MethodParser(val baseUrl: String, method: Method) {
 
     private var domainUrl: String? = null
     private var postForm: Boolean = true
@@ -20,7 +20,7 @@ class MethodParser(val baseUrl: String, method: Method, args: Array<Any>) {
         //parse method annotations such as get,post baseurl
         parseMethodAnnotations(method)
         //parse method parameters such as path field
-        parseMethodParameters(method, args)
+//        parseMethodParameters(method, args)
         //parse method generic return type
         parseMethodReturnType(method)
     }
@@ -161,7 +161,9 @@ class MethodParser(val baseUrl: String, method: Method, args: Array<Any>) {
         }
     }
 
-    fun newRequest() : HiRequest{
+    fun newRequest(method: Method,args: Array<out Any>?) : HiRequest{
+        val arguments:Array<Any> = args as Array<Any>??: arrayOf()
+        parseMethodParameters(method,arguments)
         val hiRequest = HiRequest()
         hiRequest.domainUrl = domainUrl
         hiRequest.formPost = postForm
@@ -174,8 +176,8 @@ class MethodParser(val baseUrl: String, method: Method, args: Array<Any>) {
     }
 
     companion object {
-        fun parse(baseUrl: String, method: Method, args: Array<Any>): MethodParser {
-            return MethodParser(baseUrl, method, args)
+        fun parse(baseUrl: String, method: Method): MethodParser {
+            return MethodParser(baseUrl, method)
         }
     }
 }

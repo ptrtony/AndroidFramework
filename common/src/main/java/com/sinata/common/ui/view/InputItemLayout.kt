@@ -2,7 +2,9 @@ package com.sinata.common.ui.view
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.drawable.ColorDrawable
 import android.text.InputType
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -12,28 +14,23 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.sinata.common.R
 
+
 /**
-
-Title:
-Description:
-Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
-
-
 @author jingqiang.cheng
 @date 18/7/2021
  */
-class InputItemLayout constructor(
+
+class InputItemLayout @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet?,
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attributeSet, defStyleAttr) {
 
+    private lateinit var editText: EditText
     private var bottomLine: Line
     private var topLine: Line
     private var topPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var bottomPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-
     init {
         orientation = HORIZONTAL
         val arrays = context.obtainStyledAttributes(attributeSet, R.styleable.InputItemLayout)
@@ -65,7 +62,6 @@ class InputItemLayout constructor(
             bottomPaint.strokeWidth = bottomLine.height.toFloat()
             bottomPaint.style = Paint.Style.FILL_AND_STROKE
         }
-
         arrays.recycle()
     }
 
@@ -94,7 +90,7 @@ class InputItemLayout constructor(
         val array = context.obtainStyledAttributes(resId, R.styleable.titleTextAppearance)
         val titleColor = array.getColor(
             R.styleable.titleTextAppearance_titleColor,
-            resources.getColor(R.color.color_333333)
+            resources.getColor(R.color.color_333)
         )
         val titleSize = array.getDimensionPixelSize(
             R.styleable.titleTextAppearance_titleSize,
@@ -111,6 +107,7 @@ class InputItemLayout constructor(
         val params = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
         params.gravity = Gravity.CENTER_VERTICAL
         textView.layoutParams = params
+        textView.gravity = Gravity.CENTER_VERTICAL
         textView.minWidth = minWidth
         addView(textView)
         array.recycle()
@@ -124,18 +121,19 @@ class InputItemLayout constructor(
         )
         val inputColor = array.getColor(
             R.styleable.inputTextAppearance_inputColor,
-            resources.getColor(R.color.color_333333)
+            resources.getColor(R.color.color_333)
         )
         val textSize = array.getDimensionPixelSize(
             R.styleable.inputTextAppearance_textSize,
             applyUnit(TypedValue.COMPLEX_UNIT_SP, 14f)
         )
-        val editText = EditText(context)
+        editText = EditText(context)
         val params = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
         params.weight = 1f
         params.gravity = Gravity.CENTER_VERTICAL
         editText.layoutParams = params
         editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize.toFloat())
+        editText.background = ColorDrawable(Color.TRANSPARENT)
         editText.hint = hint
         when (inputType) {
             0 -> {
@@ -146,13 +144,18 @@ class InputItemLayout constructor(
                 editText.inputType = InputType.TYPE_CLASS_NUMBER
             }
             2 -> {
-                editText.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
+                editText.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD or (InputType.TYPE_CLASS_TEXT)
             }
         }
         editText.setHintTextColor(hintColor)
         editText.setTextColor(inputColor)
         addView(editText)
         array.recycle()
+    }
+
+
+    fun getEditText():EditText{
+        return editText
     }
 
     override fun onDraw(canvas: Canvas?) {

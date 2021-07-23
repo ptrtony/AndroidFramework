@@ -7,13 +7,13 @@ package com.sinata.hi_ui.banner.core;
  * @Describe:
  */
 public abstract class HiBannerMo{
-    private String url;
+    private String bannerUrl;
 
-    public String getUrl() {
-        return url;
+    public String getBannerUrl() {
+        return bannerUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setBannerUrl(String url) {
+        this.bannerUrl = url;
     }
 }

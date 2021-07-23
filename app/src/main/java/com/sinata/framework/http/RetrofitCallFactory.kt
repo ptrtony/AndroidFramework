@@ -67,7 +67,7 @@ class RetrofitCallFactory constructor(val baseUrl: String) : HiCall.Factory {
         }
 
 
-        override fun enqueue(callback: HiCallback<T>?) {
+        override fun enqueue(callback: HiCallback<T>) {
             val realCall = createRealCall(request)
             realCall.enqueue(object:Callback<ResponseBody>{
                 override fun onResponse(
@@ -126,7 +126,6 @@ class RetrofitCallFactory constructor(val baseUrl: String) : HiCall.Factory {
     }
 
     interface ApiService {
-
         @GET
         fun get(
             @HeaderMap headers: MutableMap<String, String>?,
