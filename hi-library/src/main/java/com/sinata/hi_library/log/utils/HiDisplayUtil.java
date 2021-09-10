@@ -42,6 +42,12 @@ public class HiDisplayUtil{
         return (int) (spValue * fontScale + 0.5f);
     }
 
+
+    public static int sp2px(float spValue) {
+        float fontScale = Resources.getSystem().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
+    }
+
     /**
      * 获取屏幕的宽度
      * @param activity

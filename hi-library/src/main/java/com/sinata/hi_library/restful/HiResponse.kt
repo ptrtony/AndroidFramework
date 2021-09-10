@@ -6,8 +6,9 @@ package com.sinata.hi_library.restful
 class HiResponse<T> {
 
     companion object {
+        val CACHE_SUCCESS: Int = 301
         val SUCCESS: Int = 0
-        val RC_HAS_ERROR =  5000 //有错误
+        val RC_HAS_ERROR = 5000 //有错误
         val RC_ACCOUNT_INVALID = 5001 //账号不存在
         val RC_PWD_INVALID = 5002 //密码错误
         val RC_NEED_LOGIN = 5003 //请先登录
@@ -27,4 +28,9 @@ class HiResponse<T> {
     var data: T? = null // 业务数据
     var errorData: Map<String, String>? = null//错误状态下的数据
     var msg: String? = null //错误信息
+
+
+    fun successful(): Boolean {
+        return code == SUCCESS || code == CACHE_SUCCESS
+    }
 }

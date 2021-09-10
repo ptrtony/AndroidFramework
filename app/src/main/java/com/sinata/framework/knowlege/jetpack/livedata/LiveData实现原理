@@ -1,0 +1,10 @@
+
+LiveData架构组件原理分析
+1、什么是LiveData
+2、LiveData几种衍生类
+3、LiveData 核心方法
+4、LiveData实现原理
+
+LiveData组件是JetPack推出的基于观察者的消息订阅/分发的组件,具有宿主（Activity Fragment）生命周期感知能力
+这种感知能力可确保LiveData仅分发消息给处于活跃者的观察者，即只有处于活跃状态的观察者才能接收消息
+

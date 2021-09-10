@@ -4,20 +4,31 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
     //模块build.gradle
-    id 'com.alibaba.arouter'
+//    id 'com.alibaba.arouter'
 }
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
-//    buildFeatures {
-//        compose true
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.1.0-alpha03"
+    }
+
+//
+//    kotlinOptions {
+//        jvmTarget = "1.8"
 //    }
+
+
 
     defaultConfig {
         applicationId "com.sinata.framework"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -25,11 +36,16 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
-//            }
-//        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable",
+                             "room.schemaLocation":"$projectDir/schemas".toString()]
+            }
+
+        }
+
+
+
     }
 
     buildTypes {
@@ -37,6 +53,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -72,16 +90,10 @@ kapt {
 
 
 def camerax_version = "1.0.0"
+
+
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 //    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
 //    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
     testImplementation 'junit:junit:4.+'
@@ -111,14 +123,31 @@ dependencies {
     implementation "androidx.camera:camera-view:1.0.0-alpha24"
 //    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
 //    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
-    api project(':navi-annotation')
+    implementation project(':navi-annotation')
     kapt project(':nav-compiler')
 
-    api 'com.alibaba:arouter-api:1.5.0'
-    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    implementation 'com.alibaba:arouter-api:1.5.2'
+    kapt 'com.alibaba:arouter-compiler:1.5.2'
 
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+    implementation project(':hi_debugtool')
+
+//    implementation "androidx.compose.ui:ui:1.1.0-alpha03"
+//    implementation "androidx.compose.material:material:1.1.0-alpha03"
+//    implementation "androidx.compose.compiler:compiler:1.1.0-alpha03"
+//    implementation "androidx.compose.animation:animation:1.1.0-alpha03"
+//    implementation "androidx.compose.foundation:foundation:1.1.0-alpha03"
+//    implementation "androidx.compose.runtime:runtime:1.1.0-alpha03"
+//    implementation "androidx.compose.runtime:runtime-livedata:1.1.0-alpha03"
+//    implementation "androidx.compose.runtime:runtime-rxjava2:1.1.0-alpha03"
+
+
+
+//    implementation 'androidx.lifeycycle:lifecycle-extensions:2.0.0'
+//    // 可以把扫描所有编辑了 OnLifecycleEvent 注解的类，并生成实现类
+//    kapt 'androidx.lifeycycle:lifecycle-compiler:2.0.0'
 }
 
 

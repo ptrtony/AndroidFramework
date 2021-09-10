@@ -5,4 +5,18 @@
         <attr name="loop" format="boolean"/>
         <attr name="intervalTime" format="integer"/>
     </declare-styleable>
+
+
+    <declare-styleable name="HiSliderView">
+        <attr name="menuItemWidth" format="dimension"/>
+        <attr name="menuItemHeight" format="dimension"/>
+        <attr name="menuItemTextSize" format="dimension"/>
+        <attr name="menuItemSelectTextSize" format="dimension"/>
+        <attr name="menuItemIndicator" format="reference"/>
+        <attr name="menuItemBackgroundColor" format="color"/>
+        <attr name="menuItemSelectBackgroundColor" format="color"/>
+        <attr name="menuItemTextColor" format="reference"/>
+<!--        <attr name="menuItemSelectTextColor" format="color"/>-->
+<!--        <attr name="menuItemTextColor" format="reference"/>-->
+    </declare-styleable>
 </resources>

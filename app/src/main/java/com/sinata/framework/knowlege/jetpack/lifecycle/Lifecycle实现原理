@@ -1,0 +1,165 @@
+
+1、Lifecycle架构组件原理分析
+1）什么是Lifecycle
+2）如何使用Lifecycle观察宿主状态
+3）activity是如何实现Lifecycle的
+4）Lifecycle是如何分发宿主状态的
+
+什么是Lifecycle
+具备宿主申明后期感知能力的组件，他能持有Fragment、Activity生命周期的状态的信息，并且允许其他观察者监听宿主的状态
+
+实现方法包括三种
+第一种  继承之LifecycleObserver
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStart(){
+
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun onDestroy(){
+
+    }
+
+
+    lifecycle.addObserver(LocationLifecycle())
+
+第二种 继承之LifecycleEventObserver
+
+class LocationEventLifecycle : LifecycleEventObserver{
+
+    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+
+        if (event == Lifecycle.Event.ON_START){
+
+        }else if (event == Lifecycle.Event.ON_DESTROY){
+
+        }
+    }
+
+}
+lifecycle.addObserver(LocationEventLifecycle())
+
+ReportFragment.injectIfNeededIn(this)来分发给每一个观察者
+
+ReportFragment.injectIfNeededIn(this) 实现的原因是 如果实现类没有继承之ComponentActivity 而是直接继承之Activity
+分发给每个观察者的实际类操作类是LifecycleDispatcher类
+
+宿主的当前状态
+ public enum State {
+        /**
+         * Destroyed state for a LifecycleOwner. After this event, this Lifecycle will not dispatch
+         * any more events. For instance, for an {@link android.app.Activity}, this state is reached
+         * <b>right before</b> Activity's {@link android.app.Activity#onDestroy() onDestroy} call.
+         */
+        DESTROYED,
+
+        /**
+         * Initialized state for a LifecycleOwner. For an {@link android.app.Activity}, this is
+         * the state when it is constructed but has not received
+         * {@link android.app.Activity#onCreate(android.os.Bundle) onCreate} yet.
+         */
+        INITIALIZED,
+
+        /**
+         * Created state for a LifecycleOwner. For an {@link android.app.Activity}, this state
+         * is reached in two cases:
+         * <ul>
+         *     <li>after {@link android.app.Activity#onCreate(android.os.Bundle) onCreate} call;
+         *     <li><b>right before</b> {@link android.app.Activity#onStop() onStop} call.
+         * </ul>
+         */
+        CREATED,
+
+        /**
+         * Started state for a LifecycleOwner. For an {@link android.app.Activity}, this state
+         * is reached in two cases:
+         * <ul>
+         *     <li>after {@link android.app.Activity#onStart() onStart} call;
+         *     <li><b>right before</b> {@link android.app.Activity#onPause() onPause} call.
+         * </ul>
+         */
+        STARTED,
+
+        /**
+         * Resumed state for a LifecycleOwner. For an {@link android.app.Activity}, this state
+         * is reached after {@link android.app.Activity#onResume() onResume} is called.
+         */
+        RESUMED;
+
+        /**
+         * Compares if this State is greater or equal to the given {@code state}.
+         *
+         * @param state State to compare with
+         * @return true if this State is greater or equal to the given {@code state}
+         */
+        public boolean isAtLeast(@NonNull State state) {
+            return compareTo(state) >= 0;
+        }
+    }
+
+
+    宿主生命周期与宿主状态模型图
+
+    生命周期的升级和降级
+    private void sync() {
+            LifecycleOwner lifecycleOwner = mLifecycleOwner.get();
+            if (lifecycleOwner == null) {
+                throw new IllegalStateException("LifecycleOwner of this LifecycleRegistry is already"
+                        + "garbage collected. It is too late to change lifecycle state.");
+            }
+            while (!isSynced()) {
+                mNewEventOccurred = false;
+                // no need to check eldest for nullability, because isSynced does it for us.
+                //当前的状态小于宿主的最新状态 也就是生命周期降级  比如ON_STOP -> ON_START
+                if (mState.compareTo(mObserverMap.eldest().getValue().mState) < 0) {
+                    backwardPass(lifecycleOwner);
+                }
+                //当前的状态大于宿主的最新状态，也就是生命周期的升级 ，比如ON_START -> ON_RESUME
+                Entry<LifecycleObserver, ObserverWithState> newest = mObserverMap.newest();
+                if (!mNewEventOccurred && newest != null
+                        && mState.compareTo(newest.getValue().mState) > 0) {
+                    forwardPass(lifecycleOwner);
+                }
+            }
+            mNewEventOccurred = false;
+        }
+
+
+
+         private void backwardPass(LifecycleOwner lifecycleOwner) {
+                Iterator<Entry<LifecycleObserver, ObserverWithState>> descendingIterator =
+                        mObserverMap.descendingIterator();
+                while (descendingIterator.hasNext() && !mNewEventOccurred) {
+                    Entry<LifecycleObserver, ObserverWithState> entry = descendingIterator.next();
+                    ObserverWithState observer = entry.getValue();
+                    while ((observer.mState.compareTo(mState) > 0 && !mNewEventOccurred
+                            && mObserverMap.contains(entry.getKey()))) {
+                        Event event = downEvent(observer.mState);
+                        pushParentState(getStateAfter(event));
+                        observer.dispatchEvent(lifecycleOwner, event);
+                        popParentState();
+                    }
+                }
+            }
+
+
+
+
+  private void forwardPass(LifecycleOwner lifecycleOwner) {
+        Iterator<Entry<LifecycleObserver, ObserverWithState>> ascendingIterator =
+                mObserverMap.iteratorWithAdditions();
+        while (ascendingIterator.hasNext() && !mNewEventOccurred) {
+            Entry<LifecycleObserver, ObserverWithState> entry = ascendingIterator.next();
+            ObserverWithState observer = entry.getValue();
+            while ((observer.mState.compareTo(mState) < 0 && !mNewEventOccurred
+                    && mObserverMap.contains(entry.getKey()))) {
+                pushParentState(observer.mState);
+                observer.dispatchEvent(lifecycleOwner, upEvent(observer.mState));
+                popParentState();
+            }
+        }
+    }
+
+
+

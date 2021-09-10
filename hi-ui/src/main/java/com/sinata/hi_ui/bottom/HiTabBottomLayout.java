@@ -39,7 +39,7 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
     private float bottomAlpha = 1f;
     private float tabBottomAlpha = 1f;
     //TabBottom的高度
-    private float tabBottomHeight = 50;
+    private static float tabBottomHeight = 50;
     //TabBottom头部线条高度
     private float bottomLineHeight = 0.5f;
     //TabBottom的头部线条颜色
@@ -176,6 +176,14 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
 
         if (targetView != null){
             targetView.setPadding(0,0,0,HiDisplayUtil.dp2px(getContext().getResources(),tabBottomHeight));
+        }
+    }
+
+
+    public static void clipBottomPadding(ViewGroup targetView){
+        if (targetView != null){
+            targetView.setPadding(0,0,0,HiDisplayUtil.dp2Px(tabBottomHeight));
+            targetView.setClipToPadding(false);
         }
     }
 

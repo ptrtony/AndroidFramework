@@ -2,11 +2,16 @@ package com.sinata.hi_library.restful
 
 import androidx.annotation.IntDef
 import com.sinata.hi_library.restful.annotation.BaseUrl
+import com.sinata.hi_library.restful.annotation.CacheStrategy
 import com.sinata.hi_library.restful.annotation.GET
+import java.lang.Exception
 import java.lang.reflect.Type
 
 open class HiRequest {
 
+
+    var cacheStrategy: Int = CacheStrategy.NET_ONLY
+    private var cacheStrategyKey: String = ""
 
     @METHOD
     var httpMethod = 0 // 请求方式GET、POST
@@ -28,7 +33,7 @@ open class HiRequest {
     }
 
     //返回的是请求的完整的url
-    fun endPointUrl(): String? {
+    fun endPointUrl(): String {
         if (relativeUrl == null) {
             throw IllegalStateException("relative url must not be null")
         }
@@ -40,9 +45,38 @@ open class HiRequest {
     }
 
     fun addHeader(name: String, value: String) {
-        if (headers == null){
+        if (headers == null) {
             headers = mutableMapOf()
         }
         headers!![name] = value
+    }
+
+    fun getCacheKey(): String {
+        val builder = StringBuilder()
+        val endUrl = endPointUrl()
+        builder.append(endUrl)
+
+        if (endUrl.indexOf("?") > 0 || endUrl.indexOf("&") > 0) {
+            builder.append("&")
+        } else {
+            builder.append("?")
+        }
+        cacheStrategyKey = if (parameters != null) {
+            for ((key, value) in parameters!!) {
+                try {
+                    builder.append(key).append("=").append(value).append("&")
+                } catch (e: Exception) {
+                    //ignore
+                    e.printStackTrace()
+                }
+            }
+            builder.deleteCharAt(builder.length - 1)
+
+            builder.toString()
+        } else {
+            endUrl
+        }
+
+        return cacheStrategyKey
     }
 }

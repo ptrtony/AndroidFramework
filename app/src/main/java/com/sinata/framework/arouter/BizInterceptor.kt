@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.annotation.Interceptor
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.facade.callback.InterceptorCallback
 import com.alibaba.android.arouter.facade.service.InterceptorService
 
@@ -12,14 +13,14 @@ import com.alibaba.android.arouter.facade.service.InterceptorService
 Title:
 Description:
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:company
 
 
 @author jingqiang.cheng
 @date 4/6/2021
  */
 
-@Interceptor(name = "/profile/interceptor",priority = 1)
+@Route(path = "/profile/interceptor",priority = 1)
 class BizInterceptor : InterceptorService {
     private lateinit var mContext:Context
     override fun init(context: Context) {

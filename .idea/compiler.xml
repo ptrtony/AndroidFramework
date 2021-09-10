@@ -26,6 +26,7 @@
       <module name="FrameWork.framework" target="1.8" />
       <module name="FrameWork.hi-library" target="1.8" />
       <module name="FrameWork.hi-ui" target="1.8" />
+      <module name="FrameWork.hi_debugtool" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

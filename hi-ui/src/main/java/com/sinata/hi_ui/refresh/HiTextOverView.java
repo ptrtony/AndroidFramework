@@ -24,7 +24,7 @@ public class HiTextOverView extends HiOverView{
     private ImageView mIvRotate;
     private TextView mText;
     private Animation mAnimation;
-    public HiTextOverView(@NonNull Context context) {
+    public HiTextOverView(Context context) {
         super(context);
     }
 

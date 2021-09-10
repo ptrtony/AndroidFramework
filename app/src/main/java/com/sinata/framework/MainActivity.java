@@ -7,20 +7,14 @@ import android.view.ViewTreeObserver;
 
 import androidx.annotation.Nullable;
 
-import com.google.gson.JsonObject;
 import com.sinata.common.ui.component.HiBaseActivity;
 import com.sinata.framework.activity.HiBannerActivity;
 import com.sinata.framework.activity.HiRefreshTopActivity;
 import com.sinata.framework.activity.HiTabBottomActivity;
 import com.sinata.framework.activity.HiTabTopDemoActivity;
+import com.sinata.framework.biz.account.LoginActivity;
 import com.sinata.framework.camera.CameraDemoActivity;
-import com.sinata.framework.http.ApiFactory;
-import com.sinata.framework.http.api.AccountApi;
 import com.sinata.framework.logic.MainActivityLogic;
-import com.sinata.hi_library.restful.HiCallback;
-import com.sinata.hi_library.restful.HiResponse;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * @author cjq
@@ -43,7 +37,7 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
             }
         });
 
-        startActivity(new Intent(this,LoginActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
 
 ////
 ////        //显示意图
@@ -68,6 +62,7 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
 
 
     public void onClickTabBottom(View view){
+
         startActivity(new Intent(this, HiTabBottomActivity.class));
     }
 
@@ -87,5 +82,24 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
         startActivity(new Intent(this, CameraDemoActivity.class));
     }
 
+
+    public int balancedStringSplit(String s) {
+        int num = 0;
+        int n = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'R') {
+                n++;
+            }
+
+            if (s.charAt(i) == 'L') {
+                n--;
+            }
+
+            if (n == 0) {
+                num++;
+            }
+        }
+        return num;
+    }
 
 }

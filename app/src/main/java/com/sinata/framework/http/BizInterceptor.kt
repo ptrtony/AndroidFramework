@@ -1,7 +1,7 @@
 package com.sinata.framework.http
 
 import android.text.TextUtils
-import com.sinata.common.utils.SPUtils
+import com.sinata.hi_library.utils.SPUtils
 import com.sinata.hi_library.log.HiLog
 import com.sinata.hi_library.restful.HiInterceptor
 
@@ -10,7 +10,7 @@ import com.sinata.hi_library.restful.HiInterceptor
 Title:
 Description:
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:company
 
 
 @author jingqiang.cheng

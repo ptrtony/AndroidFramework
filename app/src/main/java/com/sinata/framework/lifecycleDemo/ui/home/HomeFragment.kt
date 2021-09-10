@@ -1,6 +1,5 @@
 package com.sinata.framework.lifecycleDemo.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.sinata.framework.R
-import com.sinata.framework.lifecycleDemo.SecondActivity
 
 class HomeFragment : Fragment() {
 
@@ -33,9 +31,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<TextView>(R.id.tv_jump_next_page)
-            .setOnClickListener {
-                startActivity(Intent(context,SecondActivity::class.java))
-            }
+//        view.findViewById<TextView>(R.id.tv_jump_next_page)
+//            .setOnClickListener {
+//                startActivity(Intent(context,SecondActivity::class.java))
+//            }
     }
 }

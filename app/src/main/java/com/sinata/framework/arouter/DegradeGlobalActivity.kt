@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.layout_global_degrade.*
 Title:
 Description:
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:company
 
 
 @author jingqiang.cheng
@@ -30,12 +30,15 @@ Company:成都博智维讯信息技术股份有限公司
 @Route(path = "/degrade/global/activity")
 class DegradeGlobalActivity : AppCompatActivity() {
 
+    @JvmField
     @Autowired
     var degrade_title: String? = null
 
+    @JvmField
     @Autowired
     var degrade_desc: String? = null
 
+    @JvmField
     @Autowired
     var degrade_action: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {

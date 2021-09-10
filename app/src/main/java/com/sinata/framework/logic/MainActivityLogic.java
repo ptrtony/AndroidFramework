@@ -20,7 +20,7 @@ import com.sinata.common.tab.HiTabViewAdapter;
 import com.sinata.framework.R;
 import com.sinata.framework.fragment.CategoryFragment;
 import com.sinata.framework.fragment.CollectFragment;
-import com.sinata.framework.fragment.HomePageFragment;
+import com.sinata.framework.fragment.home.HomePageFragment;
 import com.sinata.framework.fragment.MeFragment;
 import com.sinata.framework.fragment.RecommendFragment;
 import com.sinata.hi_library.log.utils.HiDisplayUtil;
@@ -66,6 +66,9 @@ public class MainActivityLogic {
     public void setHiTabBottomLayout(HiTabBottomLayout hiTabBottomLayout) {
         this.mHiTabBottomLayout = hiTabBottomLayout;
     }
+
+
+
 
     private void initTabBottom() {
         mHiTabBottomLayout = activityProvider.findViewById(R.id.hi_tab_bottom_layout);
@@ -158,5 +161,6 @@ public class MainActivityLogic {
 
         String getString(@StringRes int resId);
     }
+
 
 }

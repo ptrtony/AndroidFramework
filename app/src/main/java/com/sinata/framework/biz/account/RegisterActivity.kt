@@ -1,4 +1,4 @@
-package com.sinata.framework
+package com.sinata.framework.biz.account
 
 import android.os.Bundle
 import com.sinata.common.ui.component.HiBaseActivity
@@ -8,7 +8,7 @@ import com.sinata.common.ui.component.HiBaseActivity
 Title:
 Description:
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:company
 
 
 @author jingqiang.cheng

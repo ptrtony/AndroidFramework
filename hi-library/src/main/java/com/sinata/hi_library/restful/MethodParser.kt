@@ -8,9 +8,11 @@ import java.lang.reflect.Type
 
 class MethodParser(val baseUrl: String, method: Method) {
 
+    private var replaceRelativeUrl: String? = null
+    private var cacheStrategy: Int = CacheStrategy.NET_ONLY
     private var domainUrl: String? = null
     private var postForm: Boolean = true
-    private var httpMethod:Int = HiRequest.METHOD.POST
+    private var httpMethod: Int = HiRequest.METHOD.POST
     private var relativeUrl: String? = null
     private var returnType: Type? = null
     private var headers: MutableMap<String, String> = mutableMapOf()
@@ -57,6 +59,10 @@ class MethodParser(val baseUrl: String, method: Method) {
                 is BaseUrl -> {
                     domainUrl = annotation.value
                 }
+
+                is CacheStrategy -> {
+                    cacheStrategy = annotation.value
+                }
                 else -> {
                     throw IllegalStateException("cannot handle method annotation:" + annotation.javaClass.toString())
                 }
@@ -67,7 +73,7 @@ class MethodParser(val baseUrl: String, method: Method) {
             String.format("method %s  must has one of GET,POST", method.name)
         }
 
-        if (domainUrl == null){
+        if (domainUrl == null) {
             domainUrl = baseUrl
         }
     }
@@ -104,10 +110,12 @@ class MethodParser(val baseUrl: String, method: Method) {
                 val replaceName = annotation.value
                 val replacement = value.toString()
                 if (replaceName != null && replacement != null) {
-                    val newRelativeUrl = relativeUrl?.replace(replaceName,replacement)
-                    relativeUrl = newRelativeUrl
+                    replaceRelativeUrl = relativeUrl?.replace(replaceName, replacement)
                 }
-            }else{
+            } else if (annotation is CacheStrategy) {
+                cacheStrategy = value as Int
+
+            } else {
                 throw IllegalStateException("cannot handle parameters annotation : " + annotation.javaClass.toString())
             }
         }
@@ -161,17 +169,18 @@ class MethodParser(val baseUrl: String, method: Method) {
         }
     }
 
-    fun newRequest(method: Method,args: Array<out Any>?) : HiRequest{
-        val arguments:Array<Any> = args as Array<Any>??: arrayOf()
-        parseMethodParameters(method,arguments)
+    fun newRequest(method: Method, args: Array<out Any>?): HiRequest {
+        val arguments: Array<Any> = args as Array<Any>? ?: arrayOf()
+        parseMethodParameters(method, arguments)
         val hiRequest = HiRequest()
         hiRequest.domainUrl = domainUrl
         hiRequest.formPost = postForm
         hiRequest.headers = headers
         hiRequest.httpMethod = httpMethod
-        hiRequest.relativeUrl = relativeUrl
+        hiRequest.relativeUrl = replaceRelativeUrl ?: relativeUrl
         hiRequest.parameters = parameters
         hiRequest.returnType = returnType
+        hiRequest.cacheStrategy = cacheStrategy
         return hiRequest
     }
 

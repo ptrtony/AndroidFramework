@@ -1,14 +1,12 @@
-package com.sinata.framework
+package com.sinata.framework.biz.account
 
 import android.content.Intent
 import android.graphics.Typeface
-import android.graphics.fonts.FontStyle
 import android.net.Uri
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
-import android.text.TextUtils
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
@@ -16,9 +14,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import com.sinata.common.ui.component.HiBaseFragment
-import com.sinata.common.ui.view.loadCircleUrl
 import com.sinata.common.ui.view.loadRoundCornerUrl
-import com.sinata.common.ui.view.loadUrl
+import com.sinata.framework.R
 import com.sinata.framework.http.ApiFactory
 import com.sinata.framework.http.api.AccountApi
 import com.sinata.framework.model.CourseNotice
@@ -34,7 +31,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 Title:
 Description:
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:company
 
 
 @author jingqiang.cheng

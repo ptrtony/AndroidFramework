@@ -1,4 +1,4 @@
-package com.sinata.framework
+package com.sinata.framework.biz.account
 
 import android.app.Activity
 import android.content.Intent
@@ -6,20 +6,20 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import com.sinata.common.ui.component.HiBaseActivity
-import com.sinata.common.utils.SPUtils
+import com.sinata.hi_library.utils.SPUtils
+import com.sinata.framework.R
 import com.sinata.framework.http.ApiFactory
 import com.sinata.framework.http.api.AccountApi
 import com.sinata.hi_library.restful.HiCallback
 import com.sinata.hi_library.restful.HiResponse
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.fragment_dashboard.view.*
 
 /**
 
 Title:
 Description:
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:company
 
 
 @author jingqiang.cheng
@@ -36,7 +36,7 @@ class LoginActivity : HiBaseActivity() {
         }
 
         tv_go_register.setOnClickListener {
-            val intent = Intent(this,RegisterActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 

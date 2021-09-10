@@ -14,6 +14,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:networkSecurityConfig="@xml/network_sercurity_config"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.FrameWork">
@@ -21,7 +22,13 @@
 
         </activity>
         <activity android:name=".camera.CameraDemoActivity"></activity>
-        <activity android:name=".componse.ComposeDemoActivity" />
+        <activity android:name=".componse.ComposeDemoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".navigator.ui.NavigationDemoActivity"></activity>
 <!--        <activity-->
 <!--            android:name=".navigator.MainActivity"-->
@@ -40,15 +47,15 @@
         <activity android:name=".activity.HiTabBottomActivity" />
         <activity android:name=".activity.HiTabTopDemoActivity" />
         <activity android:name=".activity.HiRefreshTopActivity" />
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".biz.goods.GoodsListActivity"/>
+        <activity android:name=".biz.account.LoginActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity">
 
+        </activity>
+
+        <activity android:name=".knowlege.jetpack.livedata.LiveDataDemoActivity">
         </activity>
     </application>
 
