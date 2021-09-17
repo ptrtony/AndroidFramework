@@ -13,6 +13,7 @@
         android:backgroundTint="@color/white">
 
         <com.sinata.common.ui.view.IconFontTextView
+            android:id="@+id/action_back"
             android:layout_width="@dimen/dp_45"
             android:layout_height="@dimen/dp_45"
             android:textSize="@dimen/sp_24"
@@ -24,24 +25,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:text="@string/title_login"
+            android:text="@string/title_register"
             android:textColor="@color/black"
             android:textSize="@dimen/sp_16"
             android:gravity="center"
-            />
-
-
-        <TextView
-            android:id="@+id/tv_go_register"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:text="@string/title_register"
-            android:textColor="@color/color_298"
-            android:textSize="@dimen/sp_16"
-            android:gravity="center"
-            android:padding="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_6"
             />
 
     </RelativeLayout>
@@ -81,20 +68,51 @@
         app:inputType="password"/>
 
 
+
+    <com.sinata.common.ui.view.InputItemLayout
+        android:id="@+id/input_item_imoocid"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        app:inputTextAppearance="@style/inputTextAppearance"
+        app:titleTextAppearance="@style/titleTextAppearance"
+        app:title="@string/input_item_title_imoocid"
+        app:hint="@string/input_item_hint_imoocid"
+        app:topLineAppearance="@style/lineAppearance"
+        app:bottomLineAppearance="@style/lineAppearance"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        app:inputType="password"/>
+
+
+    <com.sinata.common.ui.view.InputItemLayout
+        android:id="@+id/input_item_order_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        app:inputTextAppearance="@style/inputTextAppearance"
+        app:titleTextAppearance="@style/titleTextAppearance"
+        app:title="@string/input_item_title_order_id"
+        app:hint="@string/input_item_hint_order_id"
+        app:topLineAppearance="@style/lineAppearance"
+        app:bottomLineAppearance="@style/lineAppearance"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        app:inputType="password"/>
+
+
+
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/action_login"
+        android:id="@+id/action_register"
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:text="@string/title_login"
+        android:text="@string/title_register"
         android:textSize="@dimen/sp_16"
         app:cornerRadius="@dimen/dp_6"
         android:backgroundTint="@color/color_dd2"/>
 
     <TextView
-        android:id="@+id/remind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_6"

@@ -211,7 +211,7 @@ class HiAdapter constructor(context: Context) : RecyclerView.Adapter<RecyclerVie
                 }
             }
         }
-        return object : RecyclerView.ViewHolder(view!!) {}
+        return HiViewHolder(view!!)
     }
 
 

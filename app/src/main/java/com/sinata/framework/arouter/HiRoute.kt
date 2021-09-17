@@ -32,8 +32,9 @@ object HiRoute {
     }
 
 
-    enum class Destination(val path: String) {
-        GOODS_LIST("/goods/list")
+    enum class Destination(val desc:String,val path: String) {
+        GOODS_LIST("商品列表","/goods/list"),
+        GOODS_DETAIL("商品详情","/goods/detail")
     }
 
 

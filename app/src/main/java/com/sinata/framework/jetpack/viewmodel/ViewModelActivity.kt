@@ -20,6 +20,8 @@ class ViewModelActivity : ComponentActivity() {
     private lateinit var viewModel:ViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AndroidViewModel::class.java)
+        val factory = ViewModelProvider.NewInstanceFactory()
+        val mViewModel = factory.create(AndroidViewModel::class.java)
+        viewModel = ViewModelProvider(this,factory).get(AndroidViewModel::class.java)
     }
 }

@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 @Time 12:01 AM
 @Describe:
  */
-abstract class HiDataItem<DATA, VH : RecyclerView.ViewHolder?>(data: DATA? = null) {
-    lateinit var mHiAdapter: HiAdapter
-    var mData: DATA? = null
+open abstract class HiDataItem<DATA, VH : RecyclerView.ViewHolder?>(data: DATA? = null) {
+    open lateinit var mHiAdapter: HiAdapter
+    open var mData: DATA? = null
 
     init {
         this.mData = data
@@ -21,7 +21,7 @@ abstract class HiDataItem<DATA, VH : RecyclerView.ViewHolder?>(data: DATA? = nul
     /**
      * 绑定数据
      */
-    abstract fun onBindData(holder: VH, position: Int)
+    open abstract fun onBindData(holder: VH, position: Int)
 
     /**
      * 获取该item的布局资源
@@ -37,21 +37,21 @@ abstract class HiDataItem<DATA, VH : RecyclerView.ViewHolder?>(data: DATA? = nul
         return null
     }
 
-    fun setAdapter(hiAdapter: HiAdapter) {
+    open fun setAdapter(hiAdapter: HiAdapter) {
         this.mHiAdapter = hiAdapter
     }
 
     /**
      * 刷新列表
      */
-    fun refreshItem() {
+    open fun refreshItem() {
         if (mHiAdapter != null) mHiAdapter.refreshItem(this as HiDataItem<*, out RecyclerView.ViewHolder>)
     }
 
     /**
      * 从列表中移除
      */
-    fun removeItem() {
+    open fun removeItem() {
         if (mHiAdapter != null) mHiAdapter.removeItem(this as HiDataItem<*, out RecyclerView.ViewHolder>)
     }
 
@@ -62,11 +62,11 @@ abstract class HiDataItem<DATA, VH : RecyclerView.ViewHolder?>(data: DATA? = nul
         return 0
     }
 
-    fun onViewAttachedToWindow(holder: VH) {
+    open fun onViewAttachedToWindow(holder: VH) {
 
     }
 
-    fun onViewDetachedFromWindow(holder: VH) {
+    open fun onViewDetachedFromWindow(holder: VH) {
 
     }
 }

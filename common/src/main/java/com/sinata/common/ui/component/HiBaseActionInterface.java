@@ -7,4 +7,5 @@ package com.sinata.common.ui.component;
  * @Describe:
  */
 public interface HiBaseActionInterface {
+
 }

@@ -23,11 +23,6 @@
         </activity>
         <activity android:name=".camera.CameraDemoActivity"></activity>
         <activity android:name=".componse.ComposeDemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".navigator.ui.NavigationDemoActivity"></activity>
 <!--        <activity-->
@@ -49,8 +44,15 @@
         <activity android:name=".activity.HiRefreshTopActivity" />
         <activity android:name=".biz.goods.GoodsListActivity"/>
         <activity android:name=".biz.account.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
+        <activity android:name=".biz.account.RegisterActivity"/>
+        <activity android:name=".fragment.detail.DetailActivity"/>
         <activity android:name=".MainActivity">
 
         </activity>

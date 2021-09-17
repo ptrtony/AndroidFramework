@@ -1,6 +1,7 @@
 package com.sinata.framework.fragment.home
 
 import android.content.Context
+import android.os.Bundle
 import android.text.TextUtils
 import android.view.Gravity
 import android.view.View
@@ -10,9 +11,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sinata.common.ui.view.loadUrl
 import com.sinata.framework.R
+import com.sinata.framework.arouter.HiRoute
 import com.sinata.framework.model.GoodsModel
 import com.sinata.hi_library.log.utils.HiDisplayUtil
 import com.sinata.hi_ui.recyclerview.HiDataItem
+import com.sinata.hi_ui.recyclerview.HiViewHolder
 import kotlinx.android.synthetic.main.layout_home_goods_list_item1.view.*
 
 /**
@@ -25,10 +28,10 @@ Company:company
 @author jingqiang.cheng
 @date 6/8/2021
  */
-class GoodsItem(data: GoodsModel, val hotTab: Boolean) :
-    HiDataItem<GoodsModel, RecyclerView.ViewHolder>(data) {
+open class GoodsItem(data: GoodsModel, val hotTab: Boolean) :
+    HiDataItem<GoodsModel, HiViewHolder>(data) {
     val MAX_TAG_SIZE = 3
-    override fun onBindData(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindData(holder: HiViewHolder, position: Int) {
         if (mData == null) return
         val context = holder.itemView.context
         holder.itemView.item_image.loadUrl(mData!!.sliderImage)
@@ -36,29 +39,31 @@ class GoodsItem(data: GoodsModel, val hotTab: Boolean) :
         holder.itemView.item_price.text = mData!!.marketPrice
         holder.itemView.item_sale_desc.text = mData!!.completedNumText
         val itemLabelContainer = holder.itemView.item_label_container
-        if (!TextUtils.isEmpty(mData!!.tags)) {
-            itemLabelContainer.visibility = View.VISIBLE
-            val split = mData!!.tags.split(" ")
-            for (index in split.indices) {
-                //0 ---- 3
-                val childCount = itemLabelContainer.childCount
-                if (index > MAX_TAG_SIZE -1){
-                    //倒序
-                    for (index in childCount - 1 downTo MAX_TAG_SIZE - 1){
-                        itemLabelContainer.removeViewAt(index)
+        if (itemLabelContainer!=null){
+            if (!TextUtils.isEmpty(mData!!.tags)) {
+                itemLabelContainer.visibility = View.VISIBLE
+                val split = mData!!.tags.split(" ")
+                for (index in split.indices) {
+                    //0 ---- 3
+                    val childCount = itemLabelContainer.childCount
+                    if (index > MAX_TAG_SIZE -1){
+                        //倒序
+                        for (index in childCount - 1 downTo MAX_TAG_SIZE - 1){
+                            itemLabelContainer.removeViewAt(index)
+                        }
                     }
+                    val labelTextView: TextView
+                    if (index > itemLabelContainer.childCount) {
+                        labelTextView = createLabelView(context, index != 0)
+                        itemLabelContainer.addView(labelTextView)
+                    } else {
+                        labelTextView = itemLabelContainer.getChildAt(index) as TextView
+                    }
+                    labelTextView.text = split[index]
                 }
-                val labelTextView: TextView
-                if (index > itemLabelContainer.childCount) {
-                    labelTextView = createLabelView(context, index != 0)
-                    itemLabelContainer.addView(labelTextView)
-                } else {
-                    labelTextView = itemLabelContainer.getChildAt(index) as TextView
-                }
-                labelTextView.text = split[index]
+            } else {
+                itemLabelContainer.visibility = View.GONE
             }
-        } else {
-            itemLabelContainer.visibility = View.GONE
         }
 
         if (!hotTab) {
@@ -73,6 +78,13 @@ class GoodsItem(data: GoodsModel, val hotTab: Boolean) :
                 params.leftMargin = margin
             }
             holder.itemView.layoutParams = params
+        }
+
+        holder.itemView.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("goodsId",mData?.goodsId)
+            bundle.putParcelable("goodsModel",mData!!)
+            HiRoute.startActivity(it.context,bundle,HiRoute.Destination.GOODS_DETAIL)
         }
     }
 

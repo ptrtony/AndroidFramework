@@ -1,6 +1,7 @@
 package com.sinata.framework
 
 import androidx.multidex.MultiDex
+import com.alibaba.android.arouter.launcher.ARouter
 import com.google.gson.Gson
 import com.sinata.common.ui.component.HiBaseApplication
 import com.sinata.hi_library.log.HiConsolePrinter
@@ -19,6 +20,11 @@ class HiApplication : HiBaseApplication() {
     override fun onCreate() {
         super.onCreate()
         // 主要是添加下面这句代码
+        if (BuildConfig.DEBUG){
+            ARouter.openDebug()
+            ARouter.openLog()
+        }
+        ARouter.init(this)
         ActivityManager.instance.init(this)
         MultiDex.install(this);
         HiLogManager.init(object : HiLogConfig() {

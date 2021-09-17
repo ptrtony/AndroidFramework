@@ -34,7 +34,7 @@ class EmptyView @JvmOverloads constructor(context: Context,attributeSet: Attribu
         orientation = VERTICAL
         gravity = Gravity.CENTER
         LayoutInflater.from(context).inflate(R.layout.layout_empty_view,this,true)
-        icon = findViewById<IconFontTextView>(R.id.empty_icon)
+        icon = findViewById(R.id.empty_icon)
         desc = findViewById(R.id.empty_text)
         title = findViewById(R.id.empty_title)
         button = findViewById(R.id.empty_action)
