@@ -1,8 +1,6 @@
 package com.sinata.framework.coroutine
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 /**
 @author cjq
@@ -10,10 +8,27 @@ import kotlinx.coroutines.launch
 @Time 12:33 PM
 @Describe:
  */
-class CortoutinesDemo {
-    fun coroutines(){
-        CoroutineScope(Dispatchers.Main).launch {
 
-        }
+
+fun main() = runBlocking {
+    launch {
+        doWorld()
     }
+    println("hello")
+}
+
+
+suspend fun doWorld() = coroutineScope {
+    val job = launch {
+        delay(2000L)
+        println("World 2")
+    }
+
+    launch {
+        delay(1000L)
+        println("World 1")
+    }
+
+    job.join()
+    println("World")
 }

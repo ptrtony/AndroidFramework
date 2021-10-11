@@ -26,11 +26,13 @@ class InputItemLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attributeSet, defStyleAttr) {
 
+    private var titleTextView: TextView? = null
     private lateinit var editText: EditText
     private var bottomLine: Line
     private var topLine: Line
     private var topPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var bottomPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+
     init {
         orientation = HORIZONTAL
         val arrays = context.obtainStyledAttributes(attributeSet, R.styleable.InputItemLayout)
@@ -100,16 +102,16 @@ class InputItemLayout @JvmOverloads constructor(
             R.styleable.titleTextAppearance_minWidth,
             applyUnit(TypedValue.COMPLEX_UNIT_DIP, 80f)
         )
-        val textView = TextView(context)
-        textView.text = title
-        textView.setTextColor(titleColor)
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleSize.toFloat())
+        titleTextView = TextView(context)
+        titleTextView?.text = title
+        titleTextView?.setTextColor(titleColor)
+        titleTextView?.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleSize.toFloat())
         val params = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
         params.gravity = Gravity.CENTER_VERTICAL
-        textView.layoutParams = params
-        textView.gravity = Gravity.CENTER_VERTICAL
-        textView.minWidth = minWidth
-        addView(textView)
+        titleTextView?.layoutParams = params
+        titleTextView?.gravity = Gravity.CENTER_VERTICAL
+        titleTextView?.minWidth = minWidth
+        addView(titleTextView)
         array.recycle()
     }
 
@@ -128,6 +130,7 @@ class InputItemLayout @JvmOverloads constructor(
             applyUnit(TypedValue.COMPLEX_UNIT_SP, 14f)
         )
         editText = EditText(context)
+        editText.setPadding(0,0,0,0)
         val params = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
         params.weight = 1f
         params.gravity = Gravity.CENTER_VERTICAL
@@ -144,7 +147,8 @@ class InputItemLayout @JvmOverloads constructor(
                 editText.inputType = InputType.TYPE_CLASS_NUMBER
             }
             2 -> {
-                editText.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD or (InputType.TYPE_CLASS_TEXT)
+                editText.inputType =
+                    InputType.TYPE_TEXT_VARIATION_PASSWORD or (InputType.TYPE_CLASS_TEXT)
             }
         }
         editText.setHintTextColor(hintColor)
@@ -154,9 +158,15 @@ class InputItemLayout @JvmOverloads constructor(
     }
 
 
-    fun getEditText():EditText{
+    fun getEditText(): EditText {
         return editText
     }
+
+
+    fun getTitleText():TextView?{
+        return titleTextView
+    }
+
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)

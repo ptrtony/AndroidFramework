@@ -99,7 +99,7 @@ class HomeTabFragment : HiAbsListFragment() {
         }
 
         data.goodsList?.forEach {
-            dataItems.add(GoodsItem(it,TextUtils.equals(categoryId, DEFAULT_HOT_TAB_CATEGORY_ID)))
+            dataItems.add(GoodsItem(it,TextUtils.equals(categoryId, DEFAULT_HOT_TAB_CATEGORY_ID)) as HiDataItem<*, RecyclerView.ViewHolder>)
         }
         finishRefresh(dataItems)
     }

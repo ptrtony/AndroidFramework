@@ -12,6 +12,7 @@ import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.google.zxing.client.android.CaptureActivity
 import com.sinata.common.ui.component.HiBaseActivity
 import com.sinata.hi_library.utils.SPUtils
 import com.sinata.framework.R
@@ -51,31 +52,32 @@ class LoginActivity : HiBaseActivity() {
     }
 
     private fun goLogin() {
-        val userName = input_item_user_name.getEditText().text.toString().trim()
-        val password = input_item_password.getEditText().text.toString().trim()
-        if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)) {
-            return
-        }
-
-        //viewmodel + repository + liivedata
-        ApiFactory.create(AccountApi::class.java).login(userName, password)
-            .enqueue(object : HiCallback<String> {
-                override fun onSuccess(response: HiResponse<String>) =
-                    if (response.code == HiResponse.SUCCESS) {
-                        //usermanager
-                        showToast(getString(R.string.login_success))
-                        val data = response.data
-                        SPUtils.putString("boarding-pass", data!!)
-                        setResult(Activity.RESULT_OK, Intent())
-                        finish()
-                    } else {
-                        showToast(getString(R.string.login_failed) + "${response.errorData}")
-                    }
-
-                override fun onFailed(throwable: Throwable) {
-                    showToast(getString(R.string.login_failed) + throwable.message)
-                }
-            })
+        startActivity(Intent(this, CaptureActivity::class.java))
+//        val userName = input_item_user_name.getEditText().text.toString().trim()
+//        val password = input_item_password.getEditText().text.toString().trim()
+//        if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)) {
+//            return
+//        }
+//
+//        //viewmodel + repository + liivedata
+//        ApiFactory.create(AccountApi::class.java).login(userName, password)
+//            .enqueue(object : HiCallback<String> {
+//                override fun onSuccess(response: HiResponse<String>) =
+//                    if (response.code == HiResponse.SUCCESS) {
+//                        //usermanager
+//                        showToast(getString(R.string.login_success))
+//                        val data = response.data
+//                        SPUtils.putString("boarding-pass", data!!)
+//                        setResult(Activity.RESULT_OK, Intent())
+//                        finish()
+//                    } else {
+//                        showToast(getString(R.string.login_failed) + "${response.errorData}")
+//                    }
+//
+//                override fun onFailed(throwable: Throwable) {
+//                    showToast(getString(R.string.login_failed) + throwable.message)
+//                }
+//            })
     }
 
     private fun showToast(msg: String) {

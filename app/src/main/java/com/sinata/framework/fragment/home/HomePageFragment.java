@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -47,26 +49,30 @@ public class HomePageFragment extends HiBaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        HiTabBottomLayout.clipBottomPadding(view.findViewById(R.id.view_pager));
-        queryTabList(view);
-    }
-
-    private void queryTabList(View view) {
-        ApiFactory.INSTANCE.create(HomeApi.class).queryTabList().enqueue(new HiCallback<List<TabCategory>>() {
-            @Override
-            public void onSuccess(@NotNull HiResponse<List<TabCategory>> response) {
-                List<TabCategory> data = response.getData();
-                if (response.successful() && data != null) {
-                    updateUI(data, view);
-                }
-            }
-
-            @Override
-            public void onFailed(@NotNull Throwable throwable) {
-
-            }
+        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel.queryTabList().observe(getViewLifecycleOwner(), tabCategories -> {
+            updateUI(tabCategories, view);
         });
+        HiTabBottomLayout.clipBottomPadding(view.findViewById(R.id.view_pager));
+//        queryTabList(view);
     }
+
+//    private void queryTabList(View view) {
+//        ApiFactory.INSTANCE.create(HomeApi.class).queryTabList().enqueue(new HiCallback<List<TabCategory>>() {
+//            @Override
+//            public void onSuccess(@NotNull HiResponse<List<TabCategory>> response) {
+//                List<TabCategory> data = response.getData();
+//                if (response.successful() && data != null) {
+//                    updateUI(data, view);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailed(@NotNull Throwable throwable) {
+//
+//            }
+//        });
+//    }
 
     private static class CustomOnPageChangeListener implements ViewPager.OnPageChangeListener {
         private int topTabSelectIndex = 0;

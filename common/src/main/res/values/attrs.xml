@@ -27,7 +27,7 @@
 
     <declare-styleable name="titleTextAppearance">
         <attr name="titleColor" format="color"/>
-        <attr name="titleSize" format="color"/>
+        <attr name="titleSize" format="dimension"/>
         <attr name="minWidth" format="dimension"/>
     </declare-styleable>
 

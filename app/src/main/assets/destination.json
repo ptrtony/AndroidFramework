@@ -1,0 +1,23 @@
+{
+  "main/tabs/dashboard": {
+    "asStarter": false,
+    "desType": "fragment",
+    "pageUrl": "main/tabs/dashboard",
+    "id": 575291825,
+    "clazzName": "com.sinata.framework.navigator.ui.dashboard.DashboardFragment"
+  },
+  "main/tabs/home": {
+    "asStarter": true,
+    "desType": "fragment",
+    "pageUrl": "main/tabs/home",
+    "id": 1986375334,
+    "clazzName": "com.sinata.framework.navigator.ui.home.HomeFragment"
+  },
+  "main/tabs/notifications": {
+    "asStarter": false,
+    "desType": "fragment",
+    "pageUrl": "main/tabs/notifications",
+    "id": 1867251171,
+    "clazzName": "com.sinata.framework.navigator.ui.notifications.NotificationsFragment"
+  }
+}

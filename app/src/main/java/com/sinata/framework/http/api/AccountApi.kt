@@ -1,6 +1,5 @@
 package com.sinata.framework.http.api
 
-import com.google.gson.JsonObject
 import com.sinata.framework.model.CourseNotice
 import com.sinata.framework.model.UserProfile
 import com.sinata.hi_library.restful.HiCall

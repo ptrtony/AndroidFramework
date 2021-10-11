@@ -13,6 +13,7 @@ import com.sinata.common.ui.view.loadUrl
 import com.sinata.framework.R
 import com.sinata.framework.arouter.HiRoute
 import com.sinata.framework.model.GoodsModel
+import com.sinata.framework.model.selectPrice
 import com.sinata.hi_library.log.utils.HiDisplayUtil
 import com.sinata.hi_ui.recyclerview.HiDataItem
 import com.sinata.hi_ui.recyclerview.HiViewHolder
@@ -36,7 +37,7 @@ open class GoodsItem(data: GoodsModel, val hotTab: Boolean) :
         val context = holder.itemView.context
         holder.itemView.item_image.loadUrl(mData!!.sliderImage)
         holder.itemView.item_title.text = mData!!.goodsName
-        holder.itemView.item_price.text = mData!!.marketPrice
+        holder.itemView.item_price.text = selectPrice(mData!!.groupPrice,mData!!.marketPrice)
         holder.itemView.item_sale_desc.text = mData!!.completedNumText
         val itemLabelContainer = holder.itemView.item_label_container
         if (itemLabelContainer!=null){

@@ -15,16 +15,16 @@ Company:company
 @date 18/7/2021
  */
 object AppGlobal {
-    var application:Application?=null
-    fun get() : Application?{
-        if (application == null){
-          try {
-              application = Class.forName("android.app.ActivityThread")
-                  .getMethod("currentApplication")
-                  .invoke(null) as Application
-          }catch (e:Exception){
-              e.printStackTrace()
-          }
+    var application: Application? = null
+    fun get(): Application? {
+        if (application == null) {
+            try {
+                application = Class.forName("android.app.ActivityThread")
+                    .getMethod("currentApplication")
+                    .invoke(null) as Application
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
         return application
     }

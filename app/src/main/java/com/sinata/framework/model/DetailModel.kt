@@ -23,7 +23,7 @@ data class DetailModel(
     val flowGoods: List<GoodsModel>?,
     val gallery: List<SliderImages>?,
     val goodsAttr: List<MutableMap<String, String>>?,
-    val goodsDescription: String,
+    val goodsDescription: String?,
     val goodsId: String,
     val goodsName: String,
     val groupPrice: String,
@@ -33,7 +33,8 @@ data class DetailModel(
     val similarGoods: List<GoodsModel>?,
     val sliderImage: String,
     val sliderImages: List<SliderImages>?,
-    val tags: String
+    val tags: String,
+    val isFavorite:Boolean
 ) {
 
 

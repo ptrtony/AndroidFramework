@@ -50,4 +50,6 @@ dependencies {
 
     api "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+    api 'com.tbruyelle.rxpermissions:rxpermissions:0.9.1@aar'
+    api 'io.reactivex:rxandroid:1.2.1'
 }

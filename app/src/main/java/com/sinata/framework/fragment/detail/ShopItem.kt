@@ -53,8 +53,7 @@ class ShopItem(val detailModel: DetailModel) : HiDataItem<DetailModel, HiViewHol
         shop?.let {
             holder.shop_logo.loadUrl(it.logo)
             holder.shop_title.text = it.name
-            holder.shop_desc.text =
-                String.format(context.getString(R.string.shop_desc), it.goodsNum, it.completedNum)
+            holder.shop_desc.text = "${it.goodsNum}件"
         }
 
         val evaluation: String? = shop?.evaluation
