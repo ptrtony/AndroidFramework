@@ -41,6 +41,18 @@ class MethodParser(val baseUrl: String, method: Method) {
                     httpMethod = HiRequest.METHOD.POST
                     postForm = annotation.postForm
                 }
+
+                is PUT -> {
+                    postForm = annotation.formPost
+                    httpMethod = HiRequest.METHOD.PUT
+                    relativeUrl = annotation.value
+                }
+
+                is DELETE -> {
+                    httpMethod = HiRequest.METHOD.DELETE
+                    relativeUrl = annotation.value
+                }
+
                 is Headers -> {
                     val headersArray = annotation.value
                     for (header in headersArray) {
@@ -63,6 +75,7 @@ class MethodParser(val baseUrl: String, method: Method) {
                 is CacheStrategy -> {
                     cacheStrategy = annotation.value
                 }
+
                 else -> {
                     throw IllegalStateException("cannot handle method annotation:" + annotation.javaClass.toString())
                 }

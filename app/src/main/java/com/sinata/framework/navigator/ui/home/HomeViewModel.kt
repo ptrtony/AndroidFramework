@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.sinata.framework.http.ApiFactory
+import com.sinata.hi_library.restful.http.ApiFactory
 import com.sinata.framework.http.api.HomeApi
 import com.sinata.framework.model.TabCategory
 import com.sinata.hi_library.restful.HiCallback

@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent">
 
-        <com.sinata.common.ui.view.IconFontTextView
+        <com.sinata.hi_ui.iconfont.IconFontTextView
             android:id="@+id/action_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             android:gravity="center"/>
 
 
-        <com.sinata.common.ui.view.IconFontTextView
+        <com.sinata.hi_ui.iconfont.IconFontTextView
             android:id="@+id/action_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
 
 
 
-    <com.sinata.common.ui.view.IconFontTextView
+    <com.sinata.hi_ui.iconfont.IconFontTextView
         android:id="@+id/action_favorite"
         android:layout_width="0dp"
         android:layout_height="58dp"

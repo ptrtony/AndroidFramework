@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sinata.common.ui.component.HiAbsListFragment
 import com.sinata.framework.fragment.home.GoodsItem
-import com.sinata.framework.http.ApiFactory
+import com.sinata.hi_library.restful.http.ApiFactory
 import com.sinata.framework.http.api.GoodsApi
 import com.sinata.framework.model.SubcategoryGoodsModel
 import com.sinata.hi_library.restful.HiCallback

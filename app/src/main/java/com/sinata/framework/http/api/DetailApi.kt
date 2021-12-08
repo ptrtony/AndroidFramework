@@ -1,8 +1,6 @@
 package com.sinata.framework.http.api
-
 import com.sinata.framework.model.DetailModel
 import com.sinata.hi_library.restful.HiCall
-import com.sinata.hi_library.restful.HiResponse
 import com.sinata.hi_library.restful.annotation.GET
 import com.sinata.hi_library.restful.annotation.Path
 

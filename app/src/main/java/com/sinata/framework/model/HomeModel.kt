@@ -1,9 +1,7 @@
 package com.sinata.framework.model
 
 import android.os.Parcelable
-import android.text.TextUtils
 import kotlinx.android.parcel.Parcelize
-import java.io.Serializable
 
 /**
 
@@ -16,16 +14,20 @@ Company:company
 @author jingqiang.cheng
 @date 4/8/2021
  */
+
+@Parcelize
 data class HomeModel(
     val bannerList: List<HomeBanner>?,
     val subCategoryList: List<SubCategory>?,
     val goodsList: List<GoodsModel>?
-) : Serializable
+) : Parcelable
 
-
+@Parcelize
 data class TabCategory(val categoryId: String, val categoryName: String, val goodsCount: String) :
-    Serializable
+    Parcelable
 
+
+@Parcelize
 data class HomeBanner(
     val cover: String,
     val createTime: String,
@@ -35,8 +37,10 @@ data class HomeBanner(
     val title: String,
     val type: String,
     val url: String
-) : Serializable
+) : Parcelable
 
+
+@Parcelize
 data class SubCategory(
     val categoryId: String,
     val groupName: String,
@@ -44,7 +48,7 @@ data class SubCategory(
     val subCategoryIcon: String,
     val subCategoryId: String,
     val subCategoryName: String
-) : Serializable
+) : Parcelable
 
 
 @Parcelize
@@ -60,11 +64,11 @@ data class GoodsModel(
     val joinedAvatars: List<SliderImages>?,
     val createTime: String,
     val sliderImage: String
-) : Serializable, Parcelable
+) : Parcelable
 
 
 @Parcelize
-data class SliderImages(val url: String, val type: Int) : Serializable, Parcelable
+data class SliderImages(val url: String, val type: Int) : Parcelable
 
 
 fun selectPrice(groupPrice: String?, marketPrice: String?): String? {

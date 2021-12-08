@@ -10,23 +10,16 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.sinata.common.ui.component.HiBaseFragment;
 import com.sinata.framework.R;
-import com.sinata.framework.http.ApiFactory;
-import com.sinata.framework.http.api.HomeApi;
 import com.sinata.framework.model.TabCategory;
-import com.sinata.hi_library.restful.HiCallback;
-import com.sinata.hi_library.restful.HiResponse;
 import com.sinata.hi_ui.bottom.HiTabBottomLayout;
 import com.sinata.hi_ui.top.HiTabTopInfo;
 import com.sinata.hi_ui.top.HiTabTopLayout;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,3 +9,17 @@ include ':hi-library'
 include ':framework'
 include ':app'
 rootProject.name = "FrameWork"
+
+
+// ASProj/settings.gradle // 已存在的内容
+setBinding(new Binding([gradle: this]))// new
+//
+println(settingsDir.parentFile.path)
+evaluate(new File(                                                      // new
+        settingsDir.parentFile,                                               // new
+        'FrameWork/flutter_library_module/.android/include_flutter.groovy'                          // new
+))
+
+//可选，主要作用是可以在当前AS的Project下显示flutter_module以方便查看和编写Dart代码
+include ':flutter_library_module'
+project(':flutter_library_module').projectDir = new File('../flutter_library_module')                                                                      // new

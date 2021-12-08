@@ -25,7 +25,7 @@
 <!--            android:textSize="16sp"/>-->
 <!--    </RelativeLayout>-->
 
-    <com.sinata.common.ui.view.IconFontTextView
+    <com.sinata.hi_ui.iconfont.IconFontTextView
         android:id="@+id/action_back"
         android:layout_width="45dp"
         android:layout_height="45dp"

@@ -3,7 +3,7 @@ package com.sinata.framework.fragment.detail
 import android.text.TextUtils
 import androidx.lifecycle.*
 import com.sinata.framework.BuildConfig
-import com.sinata.framework.http.ApiFactory
+import com.sinata.hi_library.restful.http.ApiFactory
 import com.sinata.framework.http.api.DetailApi
 import com.sinata.framework.http.api.FavoriteApi
 import com.sinata.framework.model.DetailModel

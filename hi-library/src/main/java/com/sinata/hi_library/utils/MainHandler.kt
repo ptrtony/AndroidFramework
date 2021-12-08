@@ -27,6 +27,10 @@ object MainHandler {
         handler.postDelayed(runnable, delayMillis)
     }
 
+    fun remove(runnable: Runnable){
+        handler.removeCallbacks(runnable)
+    }
+
     fun sendFrontOfQueue(runnable: Runnable){
         val message = Message.obtain(handler,runnable)
         handler.sendMessageAtFrontOfQueue(message)

@@ -7,9 +7,8 @@ import android.text.TextUtils
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.liveData
 import com.sinata.framework.arouter.LoginActivity
-import com.sinata.framework.http.ApiFactory
+import com.sinata.hi_library.restful.http.ApiFactory
 import com.sinata.framework.http.api.AccountApi
 import com.sinata.framework.model.UserProfile
 import com.sinata.hi_library.cache.HiStorage
@@ -18,7 +17,6 @@ import com.sinata.hi_library.restful.HiCallback
 import com.sinata.hi_library.restful.HiResponse
 import com.sinata.hi_library.utils.AppGlobal
 import com.sinata.hi_library.utils.SPUtils
-import okhttp3.Response
 
 /**
 

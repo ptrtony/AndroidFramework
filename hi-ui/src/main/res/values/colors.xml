@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="color_999">#999999</color>
+    <color name="hi_tabtop_normal_color">#000000</color>
+    <color name="color_dd2">#BA3830</color>
+    <color name="color_333">#333333</color>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="if_detail">&#xeb93;</string>
-    <string name="lisit_empty_desc">小朋友，你是否有很多的问号？</string>
+    <string name="list_empty_desc">小朋友，你是否有很多的问号？</string>
     <string name="list_empty_action">刷新一把</string>
 
     <string name="if_home">&#xe8c6;</string>
@@ -51,4 +51,5 @@
 
     <string name="home_search_hint">&#xe987; 搜索你想要的商品</string>
     <string name="list_empty" />
+    <string name="back">返回</string>
 </resources>

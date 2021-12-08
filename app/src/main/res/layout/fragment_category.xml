@@ -18,7 +18,7 @@
         android:textSize="@dimen/sp_16"
         />
 
-    <com.sinata.common.ui.view.IconFontTextView
+    <com.sinata.hi_ui.iconfont.IconFontTextView
         android:id="@+id/search_container"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_35"

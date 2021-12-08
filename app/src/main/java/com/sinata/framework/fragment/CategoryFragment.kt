@@ -7,16 +7,14 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import com.alibaba.android.arouter.launcher.ARouter
 import com.sinata.common.ui.component.HiBaseFragment
 import com.sinata.common.ui.view.EmptyView
 import com.sinata.common.ui.view.loadUrl
 import com.sinata.framework.R
 import com.sinata.framework.arouter.HiRoute
-import com.sinata.framework.http.ApiFactory
-import com.sinata.framework.http.ApiFactory.create
+import com.sinata.hi_library.restful.http.ApiFactory
+import com.sinata.hi_library.restful.http.ApiFactory.create
 import com.sinata.framework.http.api.CategoryApi
 import com.sinata.framework.model.SubCategory
 import com.sinata.framework.model.TabCategory
@@ -181,7 +179,7 @@ class CategoryFragment : HiBaseFragment() {
         if (emptyView == null) {
             emptyView = EmptyView(context!!, null, 0)
             emptyView!!.setIcon(R.string.if_empty3)
-            emptyView!!.setDesc(getString(R.string.lisit_empty_desc))
+            emptyView!!.setDesc(getString(R.string.list_empty_desc))
             emptyView!!.setButton(getString(R.string.list_empty_action),
                 View.OnClickListener { v: View? -> queryCategoryList() })
             emptyView!!.setBackgroundColor(context!!.resources.getColor(R.color.color_white))

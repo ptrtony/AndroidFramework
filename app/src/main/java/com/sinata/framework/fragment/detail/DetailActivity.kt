@@ -171,7 +171,7 @@ class DetailActivity : HiBaseActivity() {
             emptyView = EmptyView(this, null, 0)
             emptyView?.apply {
                 setIcon(R.string.if_empty3)
-                setDesc(getString(R.string.lisit_empty_desc))
+                setDesc(getString(R.string.list_empty_desc))
                 layoutParams = ConstraintLayout.LayoutParams(
                     ConstraintLayout.LayoutParams.WRAP_CONTENT,
                     ConstraintLayout.LayoutParams.WRAP_CONTENT
@@ -181,7 +181,6 @@ class DetailActivity : HiBaseActivity() {
                     viewModel.queryDetailPage()
                 })
             }
-
             root_container.addView(emptyView)
         }
 

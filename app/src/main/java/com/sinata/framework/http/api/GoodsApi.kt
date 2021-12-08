@@ -5,7 +5,6 @@ import com.sinata.hi_library.restful.HiCall
 import com.sinata.hi_library.restful.annotation.Filed
 import com.sinata.hi_library.restful.annotation.GET
 import com.sinata.hi_library.restful.annotation.Path
-import retrofit2.http.Field
 
 /**
 
@@ -26,7 +25,7 @@ interface GoodsApi {
         @Path("categoryId") categoryId: String,
         @Filed("subcategoryId") subcategoryId: String,
         @Filed("pageSize") pageSize: Int,
-        @Field("pageIndex") pageIndex: Int
+        @Filed("pageIndex") pageIndex: Int
     ): HiCall<SubcategoryGoodsModel>
 
 

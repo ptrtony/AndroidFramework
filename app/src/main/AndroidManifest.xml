@@ -22,14 +22,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FrameWork"
         android:usesCleartextTraffic="true">
-        <activity android:name=".hi_arch.scene3.Scene3Activity"/>
-        <activity android:name=".hi_arch.SceneActivity">
+        <activity android:name=".flutter.FlutterDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".flutter.FlutterInsertActivity">
+
+        </activity>
+        <activity android:name=".fragment.search.SearchActivity" />
+        <activity android:name=".hi_arch.scene3.Scene3Activity" />
+        <activity android:name=".hi_arch.SceneActivity" />
         <activity android:name=".hi_arch.scene2.Scene2Activity" />
         <activity android:name=".camerawater.WaterActivity" />
         <activity android:name=".big_gallery.BigGalleryActivity" />
@@ -44,6 +49,8 @@
         <activity android:name=".lazy_fragment.fragment.LazyViewPagerActivity" />
         <activity android:name=".lazy_fragment.fragment.LazyViewPager2Activity" />
         <activity android:name=".lifecycleDemo.SecondActivity" />
+<!--        <activity android:name=".hilt.HomeActivity" />-->
+<!--        <activity android:name=".hilt.hilt.HiltStudentActivity"></activity>-->
         <activity
             android:name=".lifecycleDemo.FirstActivity"
             android:label="@string/title_activity_first" />
@@ -57,7 +64,7 @@
         <activity android:name=".biz.account.RegisterActivity" />
         <activity android:name=".fragment.detail.DetailActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".knowlege.jetpack.livedata.LiveDataDemoActivity" />
+        <activity android:name="com.sinata.framework.jetpack.livedata.LiveDataDemoActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

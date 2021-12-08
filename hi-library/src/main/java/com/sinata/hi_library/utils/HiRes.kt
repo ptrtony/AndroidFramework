@@ -1,6 +1,7 @@
 package com.sinata.hi_library.utils
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -30,14 +31,21 @@ object HiRes {
         return context().getString(id, *formatArgs)
     }
 
-    fun getColor(@ColorRes id:Int):Int{
-        return ContextCompat.getColor(context(),id)
+    fun getColor(@ColorRes id: Int): Int {
+        return ContextCompat.getColor(context(), id)
     }
 
-    fun getDrawable(@DrawableRes id:Int):Drawable?{
-        return ContextCompat.getDrawable(context(),id)
+    fun getDrawable(@DrawableRes id: Int): Drawable? {
+        return ContextCompat.getDrawable(context(), id)
     }
+
+    fun getColorStateList(@ColorRes id: Int): ColorStateList? {
+        return ContextCompat.getColorStateList(context(), id)
+    }
+
     private fun context(): Context {
         return AppGlobal.get() as Context
     }
+
+
 }

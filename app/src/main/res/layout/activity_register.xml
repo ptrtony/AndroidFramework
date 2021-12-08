@@ -10,7 +10,7 @@
         android:layout_height="@dimen/dp_45"
         android:backgroundTint="@color/white">
 
-        <com.sinata.common.ui.view.IconFontTextView
+        <com.sinata.hi_ui.iconfont.IconFontTextView
             android:layout_width="@dimen/dp_45"
             android:layout_height="@dimen/dp_45"
             android:textSize="@dimen/sp_24"

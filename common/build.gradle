@@ -48,5 +48,6 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.12.0'
     api project(":hi-ui")
     api project(":hi-library")
+    api project(':flutter')
     kapt "androidx.room:room-compiler:$room_version"
 }

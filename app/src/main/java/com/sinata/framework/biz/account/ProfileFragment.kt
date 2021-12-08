@@ -16,7 +16,7 @@ import android.widget.Toast
 import com.sinata.common.ui.component.HiBaseFragment
 import com.sinata.common.ui.view.loadRoundCornerUrl
 import com.sinata.framework.R
-import com.sinata.framework.http.ApiFactory
+import com.sinata.hi_library.restful.http.ApiFactory
 import com.sinata.framework.http.api.AccountApi
 import com.sinata.framework.model.CourseNotice
 import com.sinata.framework.model.Notice

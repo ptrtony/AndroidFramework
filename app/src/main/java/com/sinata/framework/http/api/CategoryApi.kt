@@ -1,5 +1,4 @@
 package com.sinata.framework.http.api
-
 import com.sinata.framework.model.SubCategory
 import com.sinata.framework.model.TabCategory
 import com.sinata.hi_library.restful.HiCall

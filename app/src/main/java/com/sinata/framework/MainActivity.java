@@ -15,6 +15,7 @@ import com.sinata.framework.activity.HiTabTopDemoActivity;
 import com.sinata.framework.biz.account.LoginActivity;
 import com.sinata.framework.camera.CameraDemoActivity;
 import com.sinata.framework.logic.MainActivityLogic;
+import com.sinata.framework.navigator.ui.NavigationDemoActivity;
 
 /**
  * @author cjq
@@ -37,7 +38,7 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
             }
         });
 
-        startActivity(new Intent(this, LoginActivity.class));
+//        startActivity(new Intent(this, LoginActivity.class));
 
 ////
 ////        //显示意图
@@ -62,7 +63,6 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
 
 
     public void onClickTabBottom(View view){
-
         startActivity(new Intent(this, HiTabBottomActivity.class));
     }
 
@@ -81,6 +81,11 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
     public void onCameraClick(View view){
         startActivity(new Intent(this, CameraDemoActivity.class));
     }
+
+    public void onNavigationClick(View view){
+        startActivity(new Intent(this, NavigationDemoActivity.class));
+    }
+
 
 
     public int balancedStringSplit(String s) {

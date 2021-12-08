@@ -6,7 +6,6 @@ import com.sinata.hi_library.restful.HiCall
 import com.sinata.hi_library.restful.annotation.Filed
 import com.sinata.hi_library.restful.annotation.GET
 import com.sinata.hi_library.restful.annotation.Path
-import retrofit2.http.Field
 
 /**
 

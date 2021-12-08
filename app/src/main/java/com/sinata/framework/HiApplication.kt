@@ -1,8 +1,10 @@
 package com.sinata.framework
 
+import androidx.multidex.BuildConfig
 import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.google.gson.Gson
+import com.sinata.framework.flutter.HiFlutterCacheManager
 import com.sinata.common.ui.component.HiBaseApplication
 import com.sinata.hi_library.log.HiConsolePrinter
 import com.sinata.hi_library.log.HiLogConfig
@@ -15,6 +17,11 @@ import com.sinata.framework.lifecycleDemo.ActivityManager
 @Time 7:36 PM
 @Describe:
  */
+
+
+//在编译阶段他会生成顶层的component容器
+//提供全局的application context
+//为application提供对象注入的能力
 class HiApplication : HiBaseApplication() {
 
     override fun onCreate() {
@@ -24,6 +31,7 @@ class HiApplication : HiBaseApplication() {
             ARouter.openDebug()
             ARouter.openLog()
         }
+        HiFlutterCacheManager.instance!!.preLoad(this)
         ARouter.init(this)
         ActivityManager.instance.init(this)
         MultiDex.install(this);

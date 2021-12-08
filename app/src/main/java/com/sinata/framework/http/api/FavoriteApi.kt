@@ -2,8 +2,8 @@ package com.sinata.framework.http.api
 
 import com.sinata.framework.model.Favorite
 import com.sinata.hi_library.restful.HiCall
+import com.sinata.hi_library.restful.annotation.POST
 import com.sinata.hi_library.restful.annotation.Path
-import retrofit2.http.POST
 
 /**
 

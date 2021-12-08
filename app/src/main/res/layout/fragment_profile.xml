@@ -111,7 +111,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <com.sinata.common.ui.view.IconFontTextView
+        <com.sinata.hi_ui.iconfont.IconFontTextView
             android:id="@+id/item_notify"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -149,7 +149,7 @@
 
 
 
-    <com.sinata.common.ui.view.IconFontTextView
+    <com.sinata.hi_ui.iconfont.IconFontTextView
         android:id="@+id/item_collection"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_45"
@@ -165,7 +165,7 @@
         android:layout_marginLeft="@dimen/dp_24"
         android:background="@color/color_eee"/>
 
-    <com.sinata.common.ui.view.IconFontTextView
+    <com.sinata.hi_ui.iconfont.IconFontTextView
         android:id="@+id/item_address"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_45"
@@ -180,7 +180,7 @@
         android:layout_marginLeft="@dimen/dp_24"
         android:background="@color/color_eee"/>
 
-    <com.sinata.common.ui.view.IconFontTextView
+    <com.sinata.hi_ui.iconfont.IconFontTextView
         android:id="@+id/item_history"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_45"

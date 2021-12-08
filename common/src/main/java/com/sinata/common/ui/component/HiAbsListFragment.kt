@@ -66,7 +66,7 @@ open class HiAbsListFragment : HiBaseFragment(), HiRefresh.HiRefreshListener {
         emptyView?.apply {
             visibility = View.GONE
             setIcon(R.string.list_empty)
-            setDesc(context.getString(R.string.lisit_empty_desc))
+            setDesc(context.getString(R.string.list_empty_desc))
             setButton(context.getString(R.string.list_empty_action), View.OnClickListener {
                 onRefresh()
             })

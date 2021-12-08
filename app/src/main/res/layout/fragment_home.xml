@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:background="@color/color_white">
 
-    <com.sinata.common.ui.view.IconFontTextView
+    <com.sinata.hi_ui.iconfont.IconFontTextView
         android:id="@+id/search_container"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_35"

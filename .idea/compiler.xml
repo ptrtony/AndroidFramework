@@ -23,6 +23,7 @@
     <bytecodeTargetLevel target="1.7">
       <module name="FrameWork.app" target="1.8" />
       <module name="FrameWork.common" target="1.8" />
+      <module name="FrameWork.flutter" target="1.8" />
       <module name="FrameWork.framework" target="1.8" />
       <module name="FrameWork.hi-library" target="1.8" />
       <module name="FrameWork.hi-ui" target="1.8" />

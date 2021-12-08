@@ -8,7 +8,7 @@
     android:gravity="center">
 
 
-    <com.sinata.common.ui.view.IconFontTextView
+    <com.sinata.hi_ui.iconfont.IconFontTextView
         android:id="@+id/empty_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
            android:textSize="16sp"
            android:text="虽然什么都没有，要不下拉刷新看看"/>
 
-       <com.sinata.common.ui.view.IconFontTextView
+       <com.sinata.hi_ui.iconfont.IconFontTextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:id="@+id/empty_tips"

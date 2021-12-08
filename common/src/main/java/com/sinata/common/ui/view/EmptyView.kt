@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.StringRes
 import com.sinata.common.R
+import com.sinata.hi_ui.iconfont.IconFontTextView
 
 /**
 
@@ -25,11 +26,11 @@ Company:company
 @date 21/7/2021
  */
 class EmptyView @JvmOverloads constructor(context: Context,attributeSet: AttributeSet?,defStyleAttr:Int = 0):LinearLayout(context,attributeSet,defStyleAttr) {
-    private var icon:IconFontTextView
+    private var icon: IconFontTextView
     private var desc:TextView
     private var title:TextView
     private var button:Button
-    private var emptyAction:IconFontTextView
+    private var emptyAction: IconFontTextView
     init {
         orientation = VERTICAL
         gravity = Gravity.CENTER

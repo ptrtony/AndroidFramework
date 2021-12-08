@@ -2,10 +2,9 @@ package com.sinata.framework.biz.account
 
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.Toast
 import com.sinata.common.ui.component.HiBaseActivity
 import com.sinata.framework.R
-import com.sinata.framework.http.ApiFactory
+import com.sinata.hi_library.restful.http.ApiFactory
 import com.sinata.framework.http.api.AccountApi
 import com.sinata.hi_library.restful.HiCallback
 import com.sinata.hi_library.restful.HiResponse

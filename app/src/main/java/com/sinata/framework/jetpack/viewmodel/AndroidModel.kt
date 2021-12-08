@@ -1,5 +1,7 @@
 package com.sinata.framework.jetpack.viewmodel
 
+import androidx.lifecycle.MutableLiveData
+
 /**
 
 Title:
@@ -12,4 +14,8 @@ Company:成都博智维讯信息技术股份有限公司
 @date 2021/9/4
  */
 class AndroidModel {
+    val liveData = MutableLiveData<String>()
+    fun getData(){
+        liveData.postValue("hello world")
+    }
 }

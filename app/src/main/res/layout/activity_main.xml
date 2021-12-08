@@ -17,7 +17,8 @@
         android:textSize="13sp"
         android:text="底部的button"
         android:background="#009688"
-        android:onClick="onClickTabBottom"/>
+        android:onClick="onClickTabBottom"
+        android:textAllCaps="false"/>
 
 
     <Button
@@ -27,7 +28,8 @@
         android:textSize="13sp"
         android:text="top的button"
         android:background="#009688"
-        android:onClick="onClickTabTop"/>
+        android:onClick="onClickTabTop"
+        android:textAllCaps="false"/>
 
 
     <Button
@@ -37,7 +39,8 @@
         android:textSize="13sp"
         android:text="onRefreshClick"
         android:background="#009688"
-        android:onClick="onRefreshClick"/>
+        android:onClick="onRefreshClick"
+        android:textAllCaps="false"/>
 
     <Button
         android:layout_width="match_parent"
@@ -46,7 +49,8 @@
         android:textSize="13sp"
         android:background="#009688"
         android:onClick="onBannerClick"
-        android:text="toBannerActivity"/>
+        android:text="toBannerActivity"
+        android:textAllCaps="false"/>
 
 
     <Button
@@ -56,5 +60,17 @@
         android:textSize="13sp"
         android:background="#009688"
         android:onClick="onCameraClick"
-        android:text="cameraDemoActivity"/>
+        android:text="cameraDemoActivity"
+        android:textAllCaps="false"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="13sp"
+        android:background="#009688"
+        android:onClick="onNavigationClick"
+        android:text="navigationActivity"
+        android:textAllCaps="false"/>
 </LinearLayout>

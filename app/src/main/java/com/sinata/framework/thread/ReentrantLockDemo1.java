@@ -59,7 +59,7 @@ public class ReentrantLockDemo1 {
         }
 
 
-        void boos(){
+        void boss(){
             try{
                 lock.lock();
                 flag = (int) (Math.random() * 100);
@@ -104,7 +104,7 @@ public class ReentrantLockDemo1 {
                 @Override
                 public void run() {
                     while (true){
-                        task.boos();
+                        task.boss();
                     }
                 }
             };

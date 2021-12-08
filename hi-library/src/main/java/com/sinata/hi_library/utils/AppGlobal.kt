@@ -16,6 +16,22 @@ Company:company
  */
 object AppGlobal {
     var application: Application? = null
+    get() {
+        if (field == null) {
+            field = try {
+                Class.forName("android.app.ActivityThread")
+                    .getMethod("currentApplication")
+                    .invoke(null) as Application
+            } catch (e: Exception) {
+                e.printStackTrace()
+                null
+            }
+        }
+
+        return field
+    }
+
+
     fun get(): Application? {
         if (application == null) {
             try {

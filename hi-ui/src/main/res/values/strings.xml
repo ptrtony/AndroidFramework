@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="loading">正在加载/></string>
+    <string name="if_close">&#xe611;</string>
+    <string name="city_selector_tab_hint">请选择</string>
 </resources>

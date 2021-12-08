@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp">
 
-            <com.sinata.common.ui.view.IconFontTextView
+            <com.sinata.hi_ui.iconfont.IconFontTextView
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
