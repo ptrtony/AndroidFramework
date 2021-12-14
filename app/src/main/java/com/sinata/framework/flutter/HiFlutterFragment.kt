@@ -26,17 +26,18 @@ Company:成都博智维讯信息技术股份有限公司
 @author jingqiang.cheng
 @date 2021/11/24
  */
-open abstract class HiFlutterFragment : HiBaseFragment() {
+open abstract class HiFlutterFragment constructor(val moduleName:String) : HiBaseFragment() {
 
     private lateinit var flutterEngine: FlutterEngine
     private lateinit var flutterView: FlutterView
     private lateinit var root:View
+
+    private val cached = HiFlutterCacheManager.instance!!.hastCached(moduleName)
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
         flutterEngine = HiFlutterCacheManager.instance!!.getCacheFlutterEngine(
             context,
-            initFragmentType!!
+            moduleName
         )
         HiFlutterBridge.init(flutterEngine)
         flutterEngine.dartExecutor.executeDartEntrypoint(DartExecutor.DartEntrypoint.createDefault())
@@ -50,8 +51,6 @@ open abstract class HiFlutterFragment : HiBaseFragment() {
             activity?.onBackPressed()
         }
     }
-
-    abstract var initFragmentType: String?
 
     /**
      * 设置标题
@@ -74,6 +73,15 @@ open abstract class HiFlutterFragment : HiBaseFragment() {
                 }
 
             })
+        }
+    }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        //注册flutter/platform_views 插件以便能够处理native view
+        if (!cached){
+            flutterEngine.platformViewsController.attach(context,flutterEngine.renderer,flutterEngine.dartExecutor)
         }
     }
 

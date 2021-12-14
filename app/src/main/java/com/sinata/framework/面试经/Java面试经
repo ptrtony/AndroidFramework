@@ -1,6 +1,7 @@
 
 
 
+
 1、java中==和equals和hashCode的区别
 ==是运算符，用来比较两个值、两个对象的内存地址是否相等
 equals()
@@ -27,6 +28,8 @@ integer是int的包装类，int则是java的一种基本数据类型
  2.覆盖要求子类中的方法与父类中被覆盖的方法返回类型必须一致。而重载可以不一致（参数列表必须不一致）。
  3.覆盖要求子类覆盖父类的方法中不能有新抛出的异常类型。而重载允许有新抛出的异常类型。
  4.覆盖要求子类覆盖父类的方法的访问权限必须比父类的对应方法大（public > protected > default > private）。而重载则没有这种限制。
+
+
 
 5、String、StringBuffer、StringBuilder区别
 StringBuffer：线程安全，StringBuilder：线程不安全。因为 StringBuffer 的所有公开方法都是 synchronized 修饰的，而 StringBuilder 并没有 StringBuilder 修饰。

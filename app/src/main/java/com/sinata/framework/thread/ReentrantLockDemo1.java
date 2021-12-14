@@ -13,8 +13,6 @@ import java.util.concurrent.locks.ReentrantLock;
  * @date 22/6/2021
  */
 public class ReentrantLockDemo1 {
-
-
     //work 1 奇数 work 2偶数
     static class ReentrantLockTask{
         private Condition work1Condition,work2Condition;
@@ -79,33 +77,24 @@ public class ReentrantLockDemo1 {
 
         public static void main(String[] args){
             ReentrantLockTask task = new ReentrantLockTask();
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    while (true){
-                        task.work1();
-                    }
+            Runnable runnable = () -> {
+                while (true){
+                    task.work1();
                 }
             };
 
 
-            Runnable runnable1 = new Runnable() {
-                @Override
-                public void run() {
-                    while (true){
-                        task.work2();
-                    }
+            Runnable runnable1 = () -> {
+                while (true){
+                    task.work2();
                 }
             };
 
 
 
-            Runnable runnable2 = new Runnable() {
-                @Override
-                public void run() {
-                    while (true){
-                        task.boss();
-                    }
+            Runnable runnable2 = () -> {
+                while (true){
+                    task.boss();
                 }
             };
             new Thread(runnable).start();

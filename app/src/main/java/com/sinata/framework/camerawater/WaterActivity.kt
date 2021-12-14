@@ -1,5 +1,6 @@
 package com.sinata.framework.camerawater
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
@@ -15,14 +16,12 @@ import rx.functions.Action1
 
 class WaterActivity : AppCompatActivity() {
 
-
+    @SuppressLint("HandlerLeak")
     private var mHandler = object: Handler(){
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-
         }
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +42,6 @@ class WaterActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         PhotoUtil.getInstance(this).onRequestPermissionsResult(requestCode,permissions,grantResults)
     }
-
-
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

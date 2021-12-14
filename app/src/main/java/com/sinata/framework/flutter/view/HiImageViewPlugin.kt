@@ -22,7 +22,7 @@ object HiImageViewPlugin {
      * 2、非继承FlutterActivity时如何注册native view
      */
     fun registrarWith(registrar:PluginRegistry.Registrar){
-        val viewFactory = HiImageViewControlFactory()
+        val viewFactory = HiImageViewControlFactory(registrar.messenger())
         registrar.platformViewRegistry().registerViewFactory("HiImageView",viewFactory)
     }
 

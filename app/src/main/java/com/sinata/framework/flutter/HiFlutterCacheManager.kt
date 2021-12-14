@@ -59,10 +59,17 @@ class HiFlutterCacheManager private constructor() {
         return flutterEngine
     }
 
+
+    fun hastCached(moduleName: String):Boolean{
+        return FlutterEngineCache.getInstance().contains(moduleName)
+    }
+
     companion object {
 
         const val MODULE_NAME_FAVORITE = "main"
         const val MODULE_NAME_RECOMMEND = "recommend"
+
+
 
         @JvmStatic
         @get:Synchronized
