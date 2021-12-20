@@ -15,6 +15,6 @@ public class HashMapDemo {
 
     public <K,V>void hashMap(){
         HashMap<K,V> hashMap = new HashMap<K, V>();
-        hashMap.put();
+//        hashMap.put();
     }
 }

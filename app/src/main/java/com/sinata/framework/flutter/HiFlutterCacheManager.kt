@@ -64,6 +64,16 @@ class HiFlutterCacheManager private constructor() {
         return FlutterEngineCache.getInstance().contains(moduleName)
     }
 
+    /**
+     * 销毁FlutterEngine
+     */
+    fun destroyCached(moduleName: String){
+        FlutterEngineCache.getInstance()[moduleName]?.apply {
+            destroy()
+        }
+        FlutterEngineCache.getInstance().remove(moduleName)
+    }
+
     companion object {
 
         const val MODULE_NAME_FAVORITE = "main"

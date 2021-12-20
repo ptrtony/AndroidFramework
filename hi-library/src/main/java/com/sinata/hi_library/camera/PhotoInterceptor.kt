@@ -1,6 +1,5 @@
 package com.sinata.hi_library.camera
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import androidx.annotation.Nullable

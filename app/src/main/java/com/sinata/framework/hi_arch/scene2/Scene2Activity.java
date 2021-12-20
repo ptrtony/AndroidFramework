@@ -33,6 +33,7 @@ public class Scene2Activity extends AppCompatActivity {
         HomeViewModel homeViewModel = new HomeViewModel();
         binding.setViewModel(homeViewModel);
         homeViewModel.getUserInfo();
+//        binding.setViewModel();
         binding.address.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

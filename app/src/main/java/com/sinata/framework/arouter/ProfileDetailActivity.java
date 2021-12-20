@@ -2,7 +2,6 @@ package com.sinata.framework.arouter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//import com.alibaba.android.arouter.facade.annotation.Route;
 
 /**
  * Title:
