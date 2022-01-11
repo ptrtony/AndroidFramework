@@ -10,7 +10,6 @@ import com.sinata.framework.R
 import com.sinata.framework.logic.MainActivityLogic
 import com.sinata.framework.logic.MainActivityLogic.ActivityProvider
 import com.sinata.hi_debugtool.DebugToolDialogFragment
-import com.sinata.hi_debugtool.DebugTools
 
 class HiTabBottomActivity : AppCompatActivity(), ActivityProvider {
     private lateinit var mainActivityLogic: MainActivityLogic

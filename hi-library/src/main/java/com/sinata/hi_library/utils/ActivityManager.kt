@@ -1,4 +1,4 @@
-package com.sinata.framework.lifecycleDemo
+package com.sinata.hi_library.utils
 
 import android.app.Activity
 import android.app.Application
@@ -15,7 +15,7 @@ open class ActivityManager private constructor() {
 
     private val activityRefs = ArrayList<WeakReference<Activity>>()
     private val frontBackCallback = ArrayList<FontBackCallback>()
-    private var front = true
+    var front = true
     private var activityStartCount = 0
 
     interface FontBackCallback {

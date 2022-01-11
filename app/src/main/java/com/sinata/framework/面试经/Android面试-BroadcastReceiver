@@ -1,0 +1,170 @@
+
+广播的分类和使用场景
+我们在使用广播前，需要认清广播在程序中担任的角色，
+
+广播有两个角色：一个是广播接受者，一个广播发送者。这个很简单，有人发送数据，肯定还需要有人去接受数据
+
+广播有两个类型：一种是全局广播，一种是本地广播。顾名思义，就是广播作用 的范围不一样，一个比较大，一个比较小，但相对的，范围越广就越不安全，对数据的保护就不是很好。在数据安全方面，本地广　                        播更安全。
+
+              全局广播就是发送的广播，可以被任意应用接受或者接收来自其他任意应用程序的广播
+
+              本地广播则是只能在应用程序的内部进行传递的广播，广播接收器也只能接受内部的广播，不能                接受其他 应用程序的广播。
+
+按照广播机制也可以分为两种，标准广播和有序广播
+
+              无序广播：所有的接受者都会接受事件，不可以被拦截，不可以被修改
+
+              有序广播：按照优先级，一级一级的自下传递，接受者可以修改广播数据，也可以终止广播事                     件。
+
+使用广播接收器接收广播
+
+1、定义一个广播类
+
+　　在使用广播之前（接收广播），我们需要定义一个类，使其集成BroadcastReceiver，重写其中的onReceiver（）方法，onReceiver方法中就是我们想要广播接收器接受广播后的操作
+
+复制代码
+ public class MyReceiver extends ReceiverBroadcast{
+         @Overrribe
+         public void onReceiver（Context context，Intent intent）{
+
+ //一般来说，不要添加过多的逻辑或者进行任何的耗时操作，因为广播接收器中是不允许开启多线程的，过多的操作就会出现报错
+ //因此广播接收器更多是扮演一种大爱其他程序组件的角色
+
+ }
+ }
+复制代码
+2、对广播进行注册
+
+       注册的方式有两种，一种是动态注册 （使用java代码），一种是静态注册（在AndroidMainfeist文件中定义）
+
+　　　　动态注册：
+
+　　　　　　1、在相关的Activity中new一个上面定义的广播类
+
+　　　　　　2、new一个IntentFilter，调用setAction方法，参数传入相关值的action
+
+　　　　　　3、调用context。registerReceiver方法进行注册，方法的第一个参数为广播类，第二个测 　　　　　     　试IntentFilter类
+
+（大家记得要声明Receiver和IntentFilter）
+
+private myreceiver receiver；
+private IntentFilter intentFilter；
+@Overribe
+protected void onCreate（Bundle saveInStanceState）{
+        super。onCreate（saveInstanceState）；
+        setContentView（R.Layout。activity_main）;
+        receiver = new myreceiver();
+        intentFilter  = new IntentFilter();
+        intentFilter.addAction("android.net.com.CONNECTIVITY_CHANGE");
+//当网络发生变化的时候，系统广播回发出值为android.net.com.CONNECTUVUTY_CHANGE这样一条广播
+        registerReceiver(receiver,intentFilter);
+
+}
+　　        静态注册:
+
+                    1、在AndroidMainFeist中的application标签下加上receiver的子标签
+
+                    2、与通过name属性指定注册一个广播类，也就是我们刚才定义的那个广播                           类，还有enabled和exported，enabled代表是否启用这个广播接收器，                           exported属性表示是否允许这个广播接收器接受本程序以外的广播。
+
+                    3、之后再receiver标签下加上intent-filter标签，设置其的action
+
+复制代码
+<receiver android name=".myreceiver"
+               android:exported="true"
+               android:enabled="true">
+               <intent-filter>
+                       <actionandroid:name="android.intent.action.BOOT_COMPLETED">
+//开机完成后系统广播发出一条值为android.intent.action.action.BOOT_COMPLETED的广播
+</intent-filter>
+</receiver>
+复制代码
+也可以点击new，下一步，other，选择BroadcastReceiver，然后填写class nme，之后可以选择enabled和exported，这两个选项的作用，上面有说明
+
+这个功能是生成一个广播类，并且为其实现 静态注册，当然，就是实现类创建一个广播累与静态注册，我们还需要完成第三步，填写intent-filter标签中的action值，
+
+3、在AndroidMainFest中声明相关的限权
+
+　　注册完之后，在AndroidMainFest中声明相关的限权
+
+　　　　<user-permission android：name="android.permission.WRITE_CALENDAR">
+
+静态注册和动态注册的区别：静态注册在AndroidMainFest.xml里注册通过receiver标签声明的。
+
+　　　　　　　　　　　　　　　　特点：常驻，不受任何组件的生命周期影响（应用关闭后，如果有信息广播来，程序任 然会被系统
+
+                                                       调用。
+
+　　　　　　　　　　　　　　　　缺点：耗电，占内存
+
+　　　　　　　　　　　　　　　　使用场景：需要时刻监听广播
+
+　　　　　　　　　　　　　 动态注册：是在代码使用Context。registerReceiver()方法。
+
+　　　　　　　　　　　　　　　　　特点：非常驻，灵活，跟随组件的声明周期变化。
+
+　　　　　　　　　　　　　　　　　缺点：组件结束=广播结束，在组件结束前，必须移除广播接收器
+
+　　　　　　　　　　　　　　　　　 使用场景:需要特定时刻监听广播。
+
+使用广播发送者发送自定义广播
+
+前面我们将了接受广播，这里介绍下发送自定义广播
+
+　　
+
+Intent intent = new Intent（）；
+intent.setAction("com.example.mymessage");
+sendBroadcast(intent);
+sendOrderBroadcast(intent,null);//发送有序广播
+//意思是发送值为com.example.mymessage的这样一条广播
+
+
+之后，我们把intentFilter中的action改为上面com.example.mymessage可以了，但是，测试的时候我们会发现不能体现出有序广播的定义，我们需要给广播接受器设置一下优先度。
+
+如果使用的是动态注册，直接调用intentfilter.setPriorily();
+
+如果是静态注册，则是设置intent-Filter的中Priority属性
+
+　　　　　　　　　　　　<intent-filter android;priority="100"
+
+优先度的大小设置范围为-1000-1000
+
+想要截断广播，只需要在onreceive（）方法中调用aboryBroadcast()即可让广播不再传递下去。
+
+使用本地广播
+
+使用全局广播存在数据安全问题，使用本地广播，只能在本地应用程序中发送与接受广播，可以起到保护数据安全的作用。
+
+本地广播的使用与其十分类似，之前的步骤都是一样的，就是在后面注册调用的方法不同而已，注册时候调用的是LocalBroadManager的registerReceiver方法，之前调用的是context的registerReceiver方法，两者参数就完全相同的
+
+复制代码
+private myreceiver receiber；
+private IntentFilter intentFilte；
+@Overrible
+protected void onCreated(Bundle saveInstanceState){
+     super.onCreate(saveInstacneState)；
+    setContentView(R.layout.activity_main);
+     receiver =  new myreceiver();
+     intentFilter = new IntentFilter();
+     intentFIlter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+   //当网络发生变化的时候，系统广播会发出值为android.net.conn.CONNECTIVITY_CHANGE这样的一条广播
+LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
+localBroadcastManager.registerReceiver(receiver.intentfilter);
+}
+复制代码
+同样的，我们 也是需要在onDestroy(）方法中使用localBroadcastManager.unregisterReceiver(）方法，下图没有把LocalBroadcastManager定义为全局变量
+
+发送广播也是类似的
+
+LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
+Iintent intent = new Intent("com.example");
+localBroadcastManager.sedBroadcast(intent);//发送标准广播
+localBroadcastManager.sendBroadcasrsync(intent);//发送有序广播
+静态广播没有静态注册的方法，因为静态广播主要是为了让程序在未启动的情况下也能收到广播而发动本地广播的时候，我们的程序已经启动了，所以，自然没有静态注册这个方法
+
+常见的action
+见图-BroadcastReceiver-all-action.png
+
+
+
+

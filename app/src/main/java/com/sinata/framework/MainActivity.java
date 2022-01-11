@@ -38,6 +38,8 @@ public class MainActivity extends HiBaseActivity implements MainActivityLogic.Ac
             }
         });
 
+
+        double d =  Double.parseDouble("1");
 //        startActivity(new Intent(this, LoginActivity.class));
 
 ////

@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.sinata.framework.R
+import com.sinata.hi_library.utils.ActivityManager
 
 class FirstActivity : AppCompatActivity() {
 

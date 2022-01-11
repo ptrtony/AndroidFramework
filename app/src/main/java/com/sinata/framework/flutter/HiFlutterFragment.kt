@@ -76,7 +76,6 @@ open abstract class HiFlutterFragment constructor(val moduleName:String) : HiBas
         }
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         //注册flutter/platform_views 插件以便能够处理native view
@@ -119,7 +118,10 @@ open abstract class HiFlutterFragment constructor(val moduleName:String) : HiBas
         flutterEngine.lifecycleChannel.appIsDetached()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        flutterView.detachFromFlutterEngine()
+    }
+
     override fun getLayoutId(): Int = R.layout.fragment_hi_flutter
-
-
 }

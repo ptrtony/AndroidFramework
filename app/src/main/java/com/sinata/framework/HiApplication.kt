@@ -9,7 +9,8 @@ import com.sinata.common.ui.component.HiBaseApplication
 import com.sinata.hi_library.log.HiConsolePrinter
 import com.sinata.hi_library.log.HiLogConfig
 import com.sinata.hi_library.log.HiLogManager
-import com.sinata.framework.lifecycleDemo.ActivityManager
+import com.sinata.hi_library.utils.ActivityManager
+import com.sinata.hi_library.crash.CrashHandler
 
 /**
 @author cjq
@@ -31,6 +32,7 @@ class HiApplication : HiBaseApplication() {
             ARouter.openDebug()
             ARouter.openLog()
         }
+        CrashHandler.init()
         HiFlutterCacheManager.instance!!.preLoad(this)
         ARouter.init(this)
         ActivityManager.instance.init(this)

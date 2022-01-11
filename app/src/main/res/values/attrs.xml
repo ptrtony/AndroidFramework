@@ -11,5 +11,8 @@
         </attr>
     </declare-styleable>
 
-
+    <declare-styleable name="ActionBar">
+        <attr name="leftTitle" format="string|reference"/>
+        <attr name="backIcon" format=""/>
+    </declare-styleable>
 </resources>

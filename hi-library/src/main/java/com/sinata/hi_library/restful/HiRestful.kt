@@ -4,7 +4,6 @@ import java.lang.reflect.Method
 import java.lang.reflect.Proxy
 import java.util.concurrent.ConcurrentHashMap
 
-
 open class HiRestful constructor(val baseUrl: String, val callFactory: HiCall.Factory) {
     private var interceptors: MutableList<HiInterceptor> = mutableListOf()
     private var methodService: ConcurrentHashMap<Method,MethodParser> = ConcurrentHashMap()

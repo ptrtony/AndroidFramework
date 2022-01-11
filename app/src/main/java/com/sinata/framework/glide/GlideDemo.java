@@ -18,5 +18,6 @@ class GlideDemo {
 
     public void glide(Context context, String url, ImageView imageView){
         Glide.with(context).load(url).into(imageView);
+        Glide.with(context).onLowMemory();
     }
 }

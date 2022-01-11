@@ -1,0 +1,137 @@
+http://www.xiangxueketang.cn/enjoy/removal/article_7?bd_vid=7218011991375360990
+
+1、Activity
+
+1.1 说下Activity生命周期
+https://www.jianshu.com/p/94e3ab2de108
+
+1.2 Activity A 启动另一个Activity B 会调用哪些方法？如果B是透明主题的又或则是个DialogActivity呢
+Activity A  onPauseA -> onCreateB -> onStartB -> onResumeB -> onPauseB
+如果B是透明的 onPauseA -> onCreateB -> onStartB -> onResumeB
+1.3 说下onSaveInstanceState()方法的作用 ? 何时会被调用？
+
+1.4 Activity的启动流程
+https://www.jianshu.com/p/9ecea420eb52
+
+1.5 onSaveInstanceState(),onRestoreInstanceState的调用时机
+一、onSaveInstanceState(Bundle outState)在什么时机会被调用呢？
+当activity有可能被系统回收的情况下,而且是在onStop()之前。注意是有可能，如果是已经确定会被销毁，
+比如用户按下了返回键，或者调用了finish()方法销毁activity，则onSaveInstanceState不会被调用
+1、当用户按下HOME键时。
+2、从最近应用中选择运行其他的程序时。
+3、按下电源按键（关闭屏幕显示）时。
+4、从当前activity启动一个新的activity时。
+5、屏幕方向切换时(无论竖屏切横屏还是横屏切竖屏都会调用)
+在前4种情况下，当前activity的生命周期为：
+onPause -> onSaveInstanceState -> onStop。
+二、onRestoreInstanceState什么时机被调用？
+onRestoreInstanceState(Bundle savedInstanceState)只有在activity确实是被系统回收，重新创建activity的情况下才会被调用
+比如第5种情况屏幕方向切换时，activity生命周期如下：
+onPause -> onSaveInstanceState -> onStop -> onDestroy -> onCreate -> onStart -> onRestoreInstanceState -> onResume
+而按HOME键返回桌面，又马上点击应用图标回到原来页面时，activity生命周期如下：
+onPause -> onSaveInstanceState -> onStop -> onRestart -> onStart -> onResume
+三、onCreate()里也有Bundle参数，可以用来恢复数据，它和onRestoreInstanceState有什么区别？
+因为onSaveInstanceState 不一定会被调用，所以onCreate()里的Bundle参数可能为空，如果使用onCreate()来恢复数据，一定要做非空判断。
+而onRestoreInstanceState的Bundle参数一定不会是空值，因为它只有在上次activity被回收了才会调用。
+
+1.6activity的启动模式和使用场景
+standard：标准模式：如果在mainfest中不设置就默认standard；standard就是新建一个Activity就在栈中新建一个activity实例；
+singleTop：栈顶复用模式：与standard相比栈顶复用可以有效减少activity重复创建对资源的消耗，但是这要根据具体情况而定，不能一概而论；
+singleTask：栈内单例模式，栈内只有一个activity实例，栈内已存activity实例，在其他activity中start这个activity，Android直接把这个实例上面其他activity实例踢出栈GC掉；
+singleInstance :堆内单例：整个手机操作系统里面只有一个实例存在就是内存单例
+(二)、taskAffinity属性
+taskAffinity属性和Activity的启动模式息息相关，而且taskAffinity属性比较特殊，在普通的开发中也是鲜有遇到，但是在有些特定场景下却有着出其不意的效果。
+taskAffinity是Activity在mainfest中配置的一个属性，暂时可以理解为：taskAffinity为宿主Activity指定了存放的任务栈[不同于App中其他的Activity的栈]，为activity设置taskAffinity属性时不能和包名相同，因为Android团队为taskAffinity默认设置为包名任务栈。
+taskAffinity只有和SingleTask启动模式匹配使用时，启动的Activity才会运行在名字和taskAffinity相同的任务栈中。
+(三)、Intent中标志位设置启动模式
+在上文中的四种模式都是在mainfest的xml文件中进行配置的，GoogleAndroid团队同时提供另种级别更高的设置方式，即通过Intent.setFlags(int flags)设置启动模式；
+FLAG_ACTIVITY_CLEAR_TOP : 等同于mainfest中配置的singleTask，没啥好讲的；
+FLAG_ACTIVITY_SINGLE_TOP: 同样等同于mainfest中配置的singleTop;
+FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS: 其对应在AndroidManifest中的属性为android:excludeFromRecents=“true”,当用户按了“最近任务列表”时候,该Task不会出现在最近任务列表中，可达到隐藏应用的目的。
+FLAG_ACTIVITY_NO_HISTORY: 对应在AndroidManifest中的属性为:android:noHistory=“true”，这个FLAG启动的Activity，一旦退出，它不会存在于栈中。
+FLAG_ACTIVITY_NEW_TASK: 这个属性需要在被start的目标Activity在AndroidManifest.xml文件配置taskAffinity的值【必须和startActivity发其者Activity的包名不一样，如果是跳转另一个App的话可以taskAffinity可以省略】，则会在新标记的Affinity所存在的taskAffinity中压入这个Activity。
+
+1.7Activity A跳转Activity B，再按返回键，生命周期执行的顺序
+ActivityA onCreate->ActivityA onStart ->ActivityA onResume ->ActivityA onPause ->ActivityB onCreate
+->ActivityB onStart ->ActivityB onResume ->ActivityA onStop ->ActivityA onSaveInstanceState ->ActivityB onPause ->ActivityB onStop ->ActivityB onSaveInstanceState
+
+1.8横竖屏切换,按home键,按返回键,锁屏与解锁屏幕,跳转透明Activity界面,启动一个 Theme 为 Dialog 的 Activity，弹出Dialog时Activity的生命周期
+onPause -> onStop -> onSaveInstanceState -> onDestroy ->  onCreate -> onStart -> onRestoreInstanceState -> onResume -> onPause ->
+onStop -> onSaveInstanceState -> onDestroy -> onCreate -> onStart -> onRestoreInstanceState -> onResume -> onPause -> onStop ->
+onSaveInstanceState -> onRestart -> onStart -> onResume -> -> onPause
+
+1.9 onStart 和 onResume、onPause 和 onStop 的区别
+onStart 和 onResume分别表示界面可见和用户可交互
+onPause 和 onStop表示界面不可见和用户不可交互
+
+2.0 Activity之间传递数据的方式Intent是否有大小限制，如果传递的数据量偏大，有哪些方案
+https://blog.csdn.net/rflyee/article/details/47431633
+
+2.1 Activity的onNewIntent()方法什么时候会执行
+在一个应用中A activity 跳转至 B activity 在跳转至 C activity 然后C做了一定的操作之后再返回A 界面。这样在A activity的启动模式设置为singleTask后。
+C界面跳转至A界面时，就会去判断栈内是否有改Activity实例，如果有就直接执行A界面的onNewIntent()方法，我们就可以把逻辑处理放在改生命周期方法中，如果没有就会走Activity的onCreate方法去创建实例
+
+2.2 显示启动和隐式启动
+清单文件注册Activity
+需要在intent添加过滤器intentfilter
+  <activity
+            android:name="com.example.intentmethod.YinshiActivity"
+            android:label="@string/yinshi_label" >
+            <intent-filter>
+                <action android:name="com.example.intentmethod.YinshiActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+  Intent intent = new Intent(
+                          "com.example.intentmethod.YinshiActivity");
+                  startActivity(intent);
+
+2.3 scheme使用场景,协议格式,如何使用
+1.服务器下发跳转路径，客户端根据服务器下发跳转路径跳转相应的页面
+2.H5页面点击锚点，根据锚点具体跳转路径APP端跳转具体的页面
+3.APP端收到服务器端下发的PUSH通知栏消息，根据消息的点击跳转路径跳转相关页面
+4.APP根据URL跳转到另外一个APP指定页面
+https://blog.csdn.net/ZytheMoon/article/details/101674939
+
+2.4 ANR 的四种场景
+Service TimeOut：service未在规定时间执行完成，前台服务20s，后台200s
+BroadCastQueue TimeOut：未在规定时间内未处理完广播，前台广播10s内，后台60s内
+ContentProvider TimeOut：publish在10s内没有完成
+Input Dispatching timeout：5s内未响应键盘输入、触摸屏幕等事件
+Activity的生命周期回调的阻塞并不在触发ANR的场景里面，所以并不会直接触发ANR。 只不过死循环阻塞了主线程，如果系统再有上述的四种事件发生，就无法在相应的时间内处理从而触发ANR
+
+2.5 activity间传递数据的方式
+ 1.1 使用intent的putExtra传递
+ 1.2 使用Intention的Bundle传递
+ 1.3 SharedPreferences传递数据
+ 1.4 使用序列化对象Serializable
+ 1.5 使用静态变量传递数据
+
+2.6 Activity任务栈是什么
+
+2.7 跨App启动Activity的方式,注意事项
+2.7.1跨 App 启动 Activity 首先要明确 App 之间的关系
+2.7.2外部可启动 exported 或有 intentFilter 的 Activity
+2.7.3可外部启动的 Activity 需要拒绝服务漏洞
+2.7.4尽量不暴露 Activity,为暴露的 Activity 加权限控制
+2.7.5Intent 的 Extras 读取时要捕获异常
+
+2.8 有哪些Activity常用的标记位Flags
+FLAG_ ACTIVITY_NEW_TASK
+这个标记位的作用是指定Activity启动模式为”singleTask“，其作用等同于在AndroidManifest中指定android:launchMode="singleTask"相同。
+FLAG_ACTIVITY_SINGLE_TOP
+这个标记位的作用是指定Activity启动模式为”singleTop“，其作用等同于在AndroidManifest中指定android:launchMode="singleTop"相同。
+FLAG_ACTIVITY_CLEAR_TOP
+具有此标记位的Activity，当它启动的时候，在同一个任务栈中所有位于它上面的Activity都要出栈。这个模式一般需要和FLAG_ ACTIVITY_NEW_TASK配合使用，在这种情况下，如果调用的Activity的实例已存在，那么系统就会回调方法onNewIntent()。
+如果被启动的Activity采用的是standard，那么它连同它之上的Activity都要出栈，系统会重新创建Activity实例并放入栈顶。singleTask模式其实默认就具有此标记位的效果。
+FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
+具有这个标记的Activity不会出现在历史Activity的列表中，当某些情况我们不希望用户通过历史列表回到我们这个Activity的时候，这个标记将起作用。它等同于在AndroidManifest中为Activity添加属性：android:excludeFromRecents=“true”。
+
+2.9 Activity的数据是怎么保存的,进程被Kill后,保存的数据怎么恢复的
+
+
+
+
+

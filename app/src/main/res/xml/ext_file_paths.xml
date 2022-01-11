@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- /data/user/0/org.devio.as.proj.main/cache/java_crash/111111.txt-->
+    <!-- Uri格式的路径：content://org.devio.as.proj.main.fileProvider/cache-path/java_crash/111111.txt-->
+    <cache-path
+        name="cache-path"
+        path="."/>
+
+
+
+    <files-path
+        name="files_path"
+        path="."/>
+
+    <external-path
+        name="external-path"
+        path="."/>
+
+
+    <external-cache-path
+        name="external-cache-path"
+        path="."/>
+</paths>
