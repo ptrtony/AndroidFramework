@@ -29,6 +29,11 @@ class LiveDataDemoActivity : ComponentActivity (){
         viewModel?.getData()?.observe(this, Observer {
             Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
         })
+
+        viewModel?.getData()?.observeForever {
+
+        }
+        
     }
 
     fun onSubmitClick(view :View){

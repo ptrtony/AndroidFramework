@@ -7,8 +7,7 @@ import android.graphics.Rect
 import android.text.TextUtils
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.sinata.hi_library.log.utils.HiDisplayUtil
-import java.time.format.TextStyle
+import com.sinata.hi_library.utils.HiDisplayUtil
 
 /**
 
@@ -84,7 +83,8 @@ class CategoryItemDecoration(val callback: (Int) -> String, val spanSize: Int) :
 
                 val textBounds = Rect()
                 paint.getTextBounds(groupName,0,groupName.length,textBounds)
-                c.drawText(groupName,HiDisplayUtil.dp2Px(16f).toFloat(),(decorationBounds.top + textBounds.height()).toFloat(),paint)
+                c.drawText(groupName,
+                    HiDisplayUtil.dp2Px(16f).toFloat(),(decorationBounds.top + textBounds.height()).toFloat(),paint)
             }
         }
     }

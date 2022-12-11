@@ -56,5 +56,10 @@
       <option name="name" value="maven3" />
       <option name="url" value="http://download.flutter.io" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven4" />
+      <option name="name" value="maven4" />
+      <option name="url" value="https://storage.googleapis.com/download.flutter.io" />
+    </remote-repository>
   </component>
 </project>

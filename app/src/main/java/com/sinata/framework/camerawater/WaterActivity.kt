@@ -32,6 +32,8 @@ class WaterActivity : AppCompatActivity() {
 //        mHandler.obtainMessage()
 //        mHandler.sendMessage()
 //        mHandler.post()
+
+
     }
 
     override fun onRequestPermissionsResult(

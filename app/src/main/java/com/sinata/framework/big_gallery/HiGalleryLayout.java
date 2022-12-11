@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.sinata.hi_library.log.utils.HiDisplayUtil;
+import com.sinata.hi_library.utils.HiDisplayUtil;
 import java.util.ArrayList;
 import java.util.List;
 

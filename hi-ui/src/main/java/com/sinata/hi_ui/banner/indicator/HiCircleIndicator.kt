@@ -8,7 +8,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
-import com.sinata.hi_library.log.utils.HiDisplayUtil
+import com.sinata.hi_library.utils.HiDisplayUtil
 import com.sinata.hi_ui.R
 
 /**

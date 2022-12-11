@@ -1,8 +1,9 @@
-package com.sinata.hi_library.log.utils;
+package com.sinata.hi_library.utils;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.res.Configuration;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -68,4 +69,16 @@ public class HiViewUtil {
         }
         return null;
     }
+
+
+    /**
+     * 浅色主题
+     */
+    public static boolean lightMode(){
+       Context context =  AppGlobal.INSTANCE.get();
+        int mode = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        return mode == Configuration.UI_MODE_NIGHT_NO;
+    }
+
+
 }

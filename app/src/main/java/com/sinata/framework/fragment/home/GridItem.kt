@@ -11,7 +11,7 @@ import com.sinata.common.ui.view.loadUrl
 import com.sinata.framework.R
 import com.sinata.framework.arouter.HiRoute
 import com.sinata.framework.model.SubCategory
-import com.sinata.hi_library.log.utils.HiDisplayUtil
+import com.sinata.hi_library.utils.HiDisplayUtil
 import com.sinata.hi_ui.recyclerview.HiDataItem
 import com.sinata.hi_ui.recyclerview.HiViewHolder
 import kotlinx.android.synthetic.main.banner_item_layout.*

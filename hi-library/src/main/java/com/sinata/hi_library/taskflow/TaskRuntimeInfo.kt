@@ -7,7 +7,7 @@ import android.util.SparseArray
 Title: 用于记录每一个task实例的 运行时的信息的封装
 Description:
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:
 
 
 @author jingqiang.cheng

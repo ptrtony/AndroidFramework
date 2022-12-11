@@ -15,8 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.sinata.framework.R;
 import com.sinata.framework.recyclerview2.bean.ImageGalleryBean;
-import com.sinata.hi_library.log.utils.HiDisplayUtil;
-import com.wx.ovalimageview.RoundImageView;
+import com.sinata.hi_library.utils.HiDisplayUtil;
 
 import java.util.List;
 

@@ -6,7 +6,7 @@ import java.util.Vector;
  * Title: 稀疏图---链表
  * Description:
  * Copyright:Copyright(c)2021
- * Company:成都博智维讯信息技术股份有限公司
+ * Company:
  *
  * @author jingqiang.cheng
  * @date 2021/12/21

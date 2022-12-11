@@ -1,6 +1,5 @@
 package com.sinata.framework.activity;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.sinata.common.ui.component.HiBaseActivity;
 import com.sinata.framework.R;
-import com.sinata.hi_library.log.utils.HiDisplayUtil;
+import com.sinata.hi_library.utils.HiDisplayUtil;
 import com.sinata.hi_ui.search.HiSearchView;
 import com.sinata.hi_ui.tab.common.IHiTabLayout;
 import com.sinata.hi_ui.title.HiNavigationBar;

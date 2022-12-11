@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.sinata.hi_library.log.utils.HiDisplayUtil
+import com.sinata.hi_library.utils.HiDisplayUtil
 import com.sinata.hi_library.utils.HiRes
 import com.sinata.hi_ui.R
 import com.sinata.hi_ui.recyclerview.HiViewHolder
@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.dialog_city_selector.*
 Title:
 Description:
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:
 
 
 @author jingqiang.cheng

@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
-import com.sinata.hi_library.log.utils.HiDisplayUtil;
+import com.sinata.hi_library.utils.HiDisplayUtil;
 import com.sinata.hi_ui.tab.common.IHiTabLayout;
 
 import java.util.ArrayList;

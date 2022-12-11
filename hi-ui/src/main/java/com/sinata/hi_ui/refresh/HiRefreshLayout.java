@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.sinata.hi_library.log.HiLog;
-import com.sinata.hi_library.log.utils.HiScrollUtil;
+import com.sinata.hi_library.utils.HiScrollUtil;
 
 /**
  * @author cjq

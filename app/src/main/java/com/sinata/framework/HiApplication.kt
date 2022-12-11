@@ -32,7 +32,7 @@ class HiApplication : HiBaseApplication() {
             ARouter.openDebug()
             ARouter.openLog()
         }
-        CrashHandler.init()
+//        CrashHandler.init()
         HiFlutterCacheManager.instance!!.preLoad(this)
         ARouter.init(this)
         ActivityManager.instance.init(this)

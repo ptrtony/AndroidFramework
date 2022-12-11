@@ -21,7 +21,7 @@ import com.sinata.framework.http.api.AccountApi
 import com.sinata.framework.model.CourseNotice
 import com.sinata.framework.model.Notice
 import com.sinata.framework.model.UserProfile
-import com.sinata.hi_library.log.utils.HiDisplayUtil
+import com.sinata.hi_library.utils.HiDisplayUtil
 import com.sinata.hi_library.restful.HiCallback
 import com.sinata.hi_library.restful.HiResponse
 import kotlinx.android.synthetic.main.fragment_profile.*

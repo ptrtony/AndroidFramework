@@ -16,13 +16,12 @@ import java.util.List;
  * Title:
  * Description:
  * Copyright:Copyright(c)2021
- * Company:成都博智维讯信息技术股份有限公司
+ * Company:
  *
  * @author jingqiang.cheng
  * @date 2021/9/25
  */
 public class HotFix {
-
 
     public static void fix(Context context, File pathDexFile) throws IllegalAccessException, InvocationTargetException {
         ClassLoader classLoader = context.getClassLoader();

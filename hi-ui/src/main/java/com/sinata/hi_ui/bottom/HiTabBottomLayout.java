@@ -16,8 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.sinata.hi_library.log.utils.HiDisplayUtil;
-import com.sinata.hi_library.log.utils.HiViewUtil;
+import com.sinata.hi_library.utils.HiDisplayUtil;
+import com.sinata.hi_library.utils.HiViewUtil;
 import com.sinata.hi_ui.R;
 import com.sinata.hi_ui.tab.bottom.HiTabBottom;
 import com.sinata.hi_ui.tab.bottom.HiTabBottomInfo;
@@ -226,6 +226,19 @@ public class HiTabBottomLayout extends FrameLayout implements IHiTabLayout<HiTab
 
     public void setBottomLineColor(String bottomLineColor) {
         this.bottomLineColor = bottomLineColor;
+    }
+
+
+    public void resizeHiTabBottomLayout(){
+        int width = HiDisplayUtil.getDisplayWidthInPx(getContext());
+        ViewGroup frameLayout = (ViewGroup) getChildAt(getChildCount() - 1);
+        for (int i = 0; i < getChildCount(); i++) {
+            View button = frameLayout.getChildAt(i);
+            FrameLayout.LayoutParams layoutParams = (LayoutParams) button.getLayoutParams();
+            layoutParams.width =width;
+            layoutParams.leftMargin = width*i;
+            button.setLayoutParams(layoutParams);
+        }
     }
 
 }

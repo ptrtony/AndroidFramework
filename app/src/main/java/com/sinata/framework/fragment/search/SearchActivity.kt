@@ -4,16 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RelativeLayout
-import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.sinata.common.ui.view.EmptyView
 import com.sinata.framework.R
-import com.sinata.hi_library.log.utils.HiDisplayUtil
+import com.sinata.hi_library.utils.HiDisplayUtil
 import com.sinata.hi_library.utils.HiRes
 import com.sinata.hi_library.utils.HiStatusBar
 import com.sinata.hi_ui.search.HiSearchView

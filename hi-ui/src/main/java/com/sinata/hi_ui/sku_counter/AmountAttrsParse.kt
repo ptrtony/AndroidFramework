@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.util.TypedValue
-import com.sinata.hi_library.log.utils.HiDisplayUtil
+import com.sinata.hi_library.utils.HiDisplayUtil
 import com.sinata.hi_ui.R
 
 /**
@@ -12,7 +12,7 @@ import com.sinata.hi_ui.R
 Title:
 Description:
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:
 
 
 @author jingqiang.cheng
@@ -25,14 +25,19 @@ object AmountAttrsParse {
         context.theme.resolveAttribute(R.attr.hiAmountStyle,value,true)
         val defStyleRes = if (value.resourceId != 0) value.resourceId else R.style.AmountStyle
         val typedValue = context.obtainStyledAttributes(attrs,R.styleable.AmountView,defStyleAttr, defStyleRes)
-        val btnTextSize = typedValue.getDimensionPixelSize(R.styleable.AmountView_btn_text_size,HiDisplayUtil.sp2px(14f))
+        val btnTextSize = typedValue.getDimensionPixelSize(R.styleable.AmountView_btn_text_size,
+            HiDisplayUtil.sp2px(14f))
         val btnColor = typedValue.getColor(R.styleable.AmountView_btn_color, Color.parseColor("#999999"))
-        val btnSize = typedValue.getDimensionPixelSize(R.styleable.AmountView_btn_size,HiDisplayUtil.dp2Px(20f))
+        val btnSize = typedValue.getDimensionPixelSize(R.styleable.AmountView_btn_size,
+            HiDisplayUtil.dp2Px(20f))
         val btnBackground = typedValue.getColor(R.styleable.AmountView_btn_background,Color.parseColor("#EEEEEE"))
-        val btnMargin = typedValue.getDimensionPixelSize(R.styleable.AmountView_btn_margin,HiDisplayUtil.dp2Px(5f))
-        val amountTextSize = typedValue.getDimensionPixelSize(R.styleable.AmountView_amount_text_size,HiDisplayUtil.sp2px(16f))
+        val btnMargin = typedValue.getDimensionPixelSize(R.styleable.AmountView_btn_margin,
+            HiDisplayUtil.dp2Px(5f))
+        val amountTextSize = typedValue.getDimensionPixelSize(R.styleable.AmountView_amount_text_size,
+            HiDisplayUtil.sp2px(16f))
         val amountColor = typedValue.getColor(R.styleable.AmountView_amount_color,Color.parseColor("#000000"))
-        val amountSize = typedValue.getDimensionPixelSize(R.styleable.AmountView_amount_size,HiDisplayUtil.dp2Px(20f))
+        val amountSize = typedValue.getDimensionPixelSize(R.styleable.AmountView_amount_size,
+            HiDisplayUtil.dp2Px(20f))
         val amountBackground = typedValue.getColor(R.styleable.AmountView_amount_background,Color.WHITE)
         val count = typedValue.getInteger(R.styleable.AmountView_value,1)
         val maxValue = typedValue.getInteger(R.styleable.AmountView_max_value,100)

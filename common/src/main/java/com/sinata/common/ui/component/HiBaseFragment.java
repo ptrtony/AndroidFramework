@@ -29,7 +29,6 @@ public abstract class HiBaseFragment extends Fragment {
         return layoutView;
     }
 
-
     /**
      * 判断当前的页面是否被销毁
      * @return

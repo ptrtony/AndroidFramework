@@ -13,7 +13,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.sinata.hi_library.log.utils.HiDisplayUtil
+import com.sinata.hi_library.utils.HiDisplayUtil
 import com.sinata.hi_library.utils.MainHandler
 import com.sinata.hi_ui.R
 import com.sinata.hi_ui.iconfont.IconFontTextView
@@ -24,7 +24,7 @@ import java.lang.IllegalStateException
 Title:
 Description:
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:
 
 
 @author jingqiang.cheng

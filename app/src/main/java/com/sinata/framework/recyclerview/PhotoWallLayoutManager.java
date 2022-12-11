@@ -5,11 +5,10 @@ import android.graphics.Rect;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
-import android.view.animation.Animation;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.sinata.hi_library.log.utils.HiDisplayUtil;
+import com.sinata.hi_library.utils.HiDisplayUtil;
 
 import java.util.ArrayList;
 import java.util.List;

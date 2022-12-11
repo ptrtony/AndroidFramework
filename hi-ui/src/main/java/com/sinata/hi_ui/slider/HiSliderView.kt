@@ -144,6 +144,26 @@ class HiSliderView @JvmOverloads constructor(
             this.onBindView = onBindView
             this.onItemClick = onItemClick
         }
+
+
+        override fun onViewAttachedToWindow(holder: HiViewHolder) {
+            super.onViewAttachedToWindow(holder)
+            val remainSpace = width - paddingLeft - paddingRight - menuItemAttr.width
+            val layoutManager = contentView.layoutManager
+            var spanCount = 0
+            if (layoutManager is GridLayoutManager){
+                spanCount = layoutManager.spanCount
+            }else if (layoutManager is StaggeredGridLayoutManager){
+                spanCount = layoutManager.spanCount
+            }
+            if (spanCount > 0){
+                val itemWidth = remainSpace / spanCount
+                val layoutParams = holder.itemView.layoutParams
+                layoutParams.width = itemWidth
+                layoutParams.height = itemWidth
+                holder.itemView.layoutParams = layoutParams
+            }
+        }
     }
 
     inner class MenuAdapter(
@@ -271,5 +291,8 @@ class HiSliderView @JvmOverloads constructor(
     private fun applyUnit(unit: Int, value: Float): Int {
         return TypedValue.applyDimension(unit, value, context.resources.displayMetrics).toInt()
     }
+
+
+
 
 }

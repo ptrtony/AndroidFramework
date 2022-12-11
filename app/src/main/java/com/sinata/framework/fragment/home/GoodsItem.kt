@@ -14,7 +14,7 @@ import com.sinata.framework.R
 import com.sinata.framework.arouter.HiRoute
 import com.sinata.framework.model.GoodsModel
 import com.sinata.framework.model.selectPrice
-import com.sinata.hi_library.log.utils.HiDisplayUtil
+import com.sinata.hi_library.utils.HiDisplayUtil
 import com.sinata.hi_ui.recyclerview.HiDataItem
 import com.sinata.hi_ui.recyclerview.HiViewHolder
 import kotlinx.android.synthetic.main.layout_home_goods_list_item1.view.*

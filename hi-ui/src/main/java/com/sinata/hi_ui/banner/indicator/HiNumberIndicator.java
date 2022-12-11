@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.sinata.hi_library.log.utils.HiDisplayUtil;
+import com.sinata.hi_library.utils.HiDisplayUtil;
 import com.sinata.hi_ui.R;
 
 /**

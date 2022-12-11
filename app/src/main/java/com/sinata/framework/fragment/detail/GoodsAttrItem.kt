@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.layout_detail_item_attr.*
 Title:
 Description:;详情页-商品详情模块
 Copyright:Copyright(c)2021
-Company:成都博智维讯信息技术股份有限公司
+Company:
 
 
 @author jingqiang.cheng

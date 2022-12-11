@@ -1,4 +1,4 @@
-package com.sinata.hi_library.log.utils;
+package com.sinata.hi_library.utils;
 
 import android.view.View;
 import android.view.ViewGroup;

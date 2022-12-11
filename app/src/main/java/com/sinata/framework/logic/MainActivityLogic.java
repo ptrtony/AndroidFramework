@@ -23,7 +23,7 @@ import com.sinata.framework.fragment.CollectFragment;
 import com.sinata.framework.fragment.home.HomePageFragment;
 import com.sinata.framework.fragment.MeFragment;
 import com.sinata.framework.fragment.RecommendFragment;
-import com.sinata.hi_library.log.utils.HiDisplayUtil;
+import com.sinata.hi_library.utils.HiDisplayUtil;
 import com.sinata.hi_ui.bottom.HiTabBottomLayout;
 import com.sinata.hi_ui.tab.bottom.HiTabBottom;
 import com.sinata.hi_ui.tab.bottom.HiTabBottomInfo;

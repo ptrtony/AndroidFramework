@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sinata.common.ui.view.loadUrl
 import com.sinata.framework.arouter.HiRoute
 import com.sinata.framework.model.HomeBanner
-import com.sinata.hi_library.log.utils.HiDisplayUtil
+import com.sinata.hi_library.utils.HiDisplayUtil
 import com.sinata.hi_ui.banner.HiBanner
 import com.sinata.hi_ui.banner.core.HiBannerMo
 import com.sinata.hi_ui.recyclerview.HiDataItem
